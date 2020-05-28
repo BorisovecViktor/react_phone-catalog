@@ -3,12 +3,19 @@
 // @import "./styles/variables";
 @import "./styles/mixins";
 @import "./components/Header";
+@import "./components/Logo";
 @import "./components/Nav";
 @import "./components/Favorites";
 @import "./components/Cart";
+@import "./components/Footer";
 
 html {
   font-family: Mont, Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 1136px;
+  margin: 0 auto;
 }
 
 

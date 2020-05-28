@@ -6,7 +6,12 @@ const Favorites = () => {
     <div className="header__favorites favorites">
       <Link
         className="favorites__link"
-        to="/favorites">
+        to="/favorites"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </Link>
     </div>
   );
