@@ -1,0 +1,22 @@
+@import "../styles/variables";
+
+.products {
+  &__title {
+    margin-top: 40px;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+    row-gap: 40px;
+  }
+}

@@ -1,0 +1,17 @@
+@import "../styles/variables";
+
+.product {
+  border: 1px solid $border-section-color;
+  padding: 24px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+
+  &__old-price {
+    text-decoration: line-through;
+  }
+
+  &__image {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+  }
+}

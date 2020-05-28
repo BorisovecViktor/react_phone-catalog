@@ -1,11 +1,16 @@
 import React from 'react';
 
-const PhonesPage = () => {
+import './PhonesPage.scss';
+import ProductsList from '../components/ProductsList';
+
+type Props = {
+  products: Product[];
+};
+
+const PhonesPage: React.FC<Props> = ({ products }) => {
   return (
-    <div>
-      <h1>Phones</h1>
-    </div>
+    <ProductsList products={products} />
   );
-}
+};
 
 export default PhonesPage;
