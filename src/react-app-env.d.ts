@@ -1,1 +1,4 @@
-// / <reference types="react-scripts" />
+interface HeaderLink {
+  title: string;
+  url: string;
+}
