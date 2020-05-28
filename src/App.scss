@@ -1,5 +1,11 @@
 @import "./styles/fonts";
 @import "./styles/reset";
+// @import "./styles/variables";
+@import "./styles/mixins";
+@import "./components/Header";
+@import "./components/Nav";
+@import "./components/Favorites";
+@import "./components/Cart";
 
 html {
   font-family: Mont, Arial, Helvetica, sans-serif;

@@ -1,0 +1,20 @@
+@import "../styles/variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $header-height;
+  border-bottom: 1px solid $border-section-color;
+  box-sizing: border-box;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    margin-left: 24px;
+    margin-right: 64px;
+  }
+}
