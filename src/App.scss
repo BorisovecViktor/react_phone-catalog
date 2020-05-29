@@ -11,11 +11,10 @@
 
 html {
   font-family: Mont, Arial, Helvetica, sans-serif;
+  color: $primary-color;
 }
 
 .container {
-  width: 1136px;
+  max-width: 1200px;
   margin: 0 auto;
 }
-
-

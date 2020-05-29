@@ -1,12 +1,15 @@
 import React from 'react';
 
-const AccessoriesPage = () => {
+type Props = {
+  products: Product[];
+};
+
+const AccessoriesPage: React.FC<Props> = () => {
   return (
     <div>
-      <h1>Accessories</h1>
+      <h1>Accessories page</h1>
     </div>
   );
-}
+};
 
 export default AccessoriesPage;
-
