@@ -6,7 +6,12 @@ const Cart = () => {
     <div className="header__cart cart">
       <Link
         className="cart__link"
-        to="/cart">
+        to="/cart"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </Link>
     </div>
   );

@@ -1,4 +1,4 @@
-interface HeaderLink {
+interface NavLinkType {
   title: string;
   url: string;
 }
