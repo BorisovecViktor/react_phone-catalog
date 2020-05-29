@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { getProducts } from './helpers/api';
+import { FILTERS } from './constants';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -34,7 +35,7 @@ const App = () => {
           <Redirect from="/home" to="/" />
           <Route path="/" exact component={HomePage} />
           <Route path="/phones">
-            <PhonesPage products={products} />
+            <PhonesPage products={products} filter={FILTERS.phones} />
           </Route>
           <Route path="/tablets">
             <TabletsPage products={products} />
