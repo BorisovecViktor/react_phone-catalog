@@ -1,0 +1,37 @@
+@import "../styles/variables";
+
+.nav {
+  &__list {
+    display: flex;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 64px;
+  }
+
+  &__link {
+    display: block;
+    line-height: $header-height;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $secondary-color;
+    @include hover(color, $primary-color, 0.3);
+
+    &--active {
+      position: relative;
+      color: $primary-color;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3px;
+        background-color: $primary-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@import "../styles/variables";
+
+.products {
+  &__subtitle {
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+    row-gap: 40px;
+  }
+
+  &__filters {
+    display: flex;
+  }
+
+  &__filter {
+    margin-right: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__filter-title {
+    margin-top: 40px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+
+  &__filter-select {
+    width: 170px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    margin-top: 4px;
+    border: 1px solid $input-border-color;
+    appearance: none;
+    background-image: url("../img/icons/arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
