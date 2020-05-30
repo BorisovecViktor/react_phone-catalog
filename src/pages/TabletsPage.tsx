@@ -1,14 +1,20 @@
 import React from 'react';
 
+import ProductsList from '../components/ProductsList';
+
 type Props = {
   products: Product[];
+  filter: string;
 };
 
-const TabletsPage: React.FC<Props> = () => {
+const TabletsPage: React.FC<Props> = ({ products, filter }) => {
   return (
-    <div>
-      <h1>Tablet page</h1>
-    </div>
+    <main className="products">
+      <h1 className="products__title">
+        Tablets
+      </h1>
+      <ProductsList products={products} filter={filter} />
+    </main>
   );
 };
 

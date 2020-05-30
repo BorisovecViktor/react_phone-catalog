@@ -1,5 +1,11 @@
 export const FILTERS = {
   phones: 'phone',
   tablets: 'tablet',
-  accessories: 'accessorie',
+  accessories: 'accessories',
+};
+
+export const SORT_BY = {
+  releaseDate: 'release-date',
+  priceAsc: 'price-asc',
+  priceDesc: 'price-desc',
 };
