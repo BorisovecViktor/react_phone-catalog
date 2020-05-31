@@ -12,6 +12,7 @@
     grid-template-columns: repeat(4, 1fr);
     column-gap: 16px;
     row-gap: 40px;
+    margin-bottom: 40px;
   }
 
   &__filters {
@@ -39,6 +40,7 @@
     line-height: 21px;
     margin-top: 4px;
     border: 1px solid $input-border-color;
+    outline: none;
     appearance: none;
     background-image: url("../img/icons/arrow-down.svg");
     background-repeat: no-repeat;

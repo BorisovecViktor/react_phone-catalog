@@ -35,13 +35,22 @@ const App = () => {
           <Redirect from="/home" to="/" />
           <Route path="/" exact component={HomePage} />
           <Route path="/phones">
-            <PhonesPage products={products} filter={FILTERS.phones} />
+            <PhonesPage
+              products={products}
+              filter={FILTERS.phones}
+            />
           </Route>
           <Route path="/tablets">
-            <TabletsPage products={products} />
+            <TabletsPage
+              products={products}
+              filter={FILTERS.tablets}
+            />
           </Route>
           <Route path="/accessories">
-            <AccessoriesPage products={products} />
+            <AccessoriesPage
+              products={products}
+              filter={FILTERS.accessories}
+            />
           </Route>
           <Route path="/product-details" component={ProductDetailsPage} />
           <Route path="/cart" component={CartPage} />
