@@ -48,8 +48,8 @@ const App = () => {
           <Route path="/favorites" component={FavoritesPage} />
           <Route component={NotFoundPage} />
         </Switch>
-        <Footer />
       </div>
+        <Footer />
     </div>
   );
 };

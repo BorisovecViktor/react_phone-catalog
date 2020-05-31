@@ -1,0 +1,100 @@
+.slider {
+  position: relative;
+  margin-top: 40px;
+  margin-bottom: 24px;
+
+  &__container {
+    width: 1104px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  &__button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 32px;
+    box-sizing: border-box;
+    border: 1px solid $secondary-color;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    outline: 0;
+    cursor: pointer;
+    @include hover(border-color, $primary-color, 0.3);
+
+    &--left {
+      background-image: url("../img/icons/slider-arrow-left.svg");
+      left: 0;
+    }
+
+    &--right {
+      background-image: url("../img/icons/slider-arrow-right.svg");
+      right: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    transition-duration: 0.5s;
+  }
+
+  &__item {
+    position: relative;
+    width: 1104px;
+    height: 457px;
+  }
+
+  &__content {
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    width: 457px;
+    color: #fff;
+  }
+
+  &__title {
+    font-size: 50px;
+    line-height: 60px;
+    margin-bottom: 17px;
+    letter-spacing: 0.08px;
+  }
+
+  &__description {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  &__img {
+    width: 1104px;
+    height: 457px;
+    object-fit: cover;
+  }
+
+  &__dots {
+    display: flex;
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__dot {
+    display: block;
+    width: 14px;
+    height: 4px;
+    border: 0;
+    outline: 0;
+    background-color: $secondary-color;
+    transition: background-color 0.5s;
+    cursor: pointer;
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
+
+  &__dot:not(:last-child) {
+    margin-right: 14px;
+  }
+}

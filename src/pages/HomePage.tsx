@@ -1,12 +1,15 @@
 import React from 'react';
+import BannerSlider from '../components/BannerSlider';
 
-const HomePage = () => {
-  return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
-  );
-}
+const HomePage = () => (
+  <>
+    <h1 className="visually-hidden">Products Catalog</h1>
+    <section className="section">
+      <BannerSlider />
+    </section>
+  </>
+);
+
 
 export default HomePage;
 
