@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import classNames from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './ProductCard.scss';
+import * as store from '../store';
+import { addToCart, removeFromCart } from '../store/cart';
+import { addToFavourites, removeFromFavourites } from '../store/favourites';
 
 type Props = {
   product: Product;
@@ -8,6 +13,7 @@ type Props = {
 
 const ProductCard: React.FC<Props> = ({ product }) => {
   const {
+    id,
     name,
     imageUrl,
     price,
@@ -16,6 +22,15 @@ const ProductCard: React.FC<Props> = ({ product }) => {
     capacity,
     ram,
   } = product;
+
+  const dispatch = useDispatch();
+  const cart = useSelector(store.getCart);
+  const favourites = useSelector(store.getFavourites);
+  const isAddedToCart = cart.some(item => item.id === id);
+  const isAddedToFavourites = favourites.some(item => item.id === id);
+
+  const [cartButtonText, setCartButtonText] = useState(isAddedToCart ? 'Added to cart' : 'Add to cart');
+
 
   return (
     <article className="product">
@@ -75,14 +90,47 @@ const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
       <div className="product__actions">
         <button
-          className="product__button-buy"
+          className={classNames(
+            'product__button-buy',
+            { 'product__button-buy--active': isAddedToCart },
+          )}
           type="button"
+          onClick={() => {
+            if (isAddedToCart) {
+              dispatch(removeFromCart(id));
+              setCartButtonText('Add to cart');
+            } else {
+              dispatch(addToCart(id, 1, product));
+            }
+          }}
+
+          onMouseEnter={() => {
+            if (isAddedToCart) {
+              setCartButtonText('Remove');
+            }
+          }}
+
+          onMouseLeave={() => {
+            if (isAddedToCart) {
+              setCartButtonText('Added to cart');
+            }
+          }}
         >
-          Add to cart
+          {cartButtonText}
         </button>
         <button
-          className="product__button-favorite"
+          className={classNames(
+            'product__button-favorite',
+            { 'product__button-favorite--active': isAddedToFavourites },
+          )}
           type="button"
+          onClick={() => {
+            if (isAddedToFavourites) {
+              dispatch(removeFromFavourites(product));
+            } else {
+              dispatch(addToFavourites(product));
+            }
+          }}
         >
           {' '}
         </button>

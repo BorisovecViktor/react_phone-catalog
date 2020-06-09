@@ -4,17 +4,16 @@ import './PhonesPage.scss';
 import ProductsList from '../components/ProductsList';
 
 type Props = {
-  products: Product[];
   filter: string;
 };
 
-const PhonesPage: React.FC<Props> = ({ products, filter }) => {
+const PhonesPage: React.FC<Props> = ({ filter }) => {
   return (
     <>
       <h1 className="page__title">
         Mobile phones
       </h1>
-      <ProductsList products={products} filter={filter} />
+      <ProductsList filter={filter} />
     </>
   );
 };
