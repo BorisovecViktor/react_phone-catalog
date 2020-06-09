@@ -111,7 +111,6 @@ export const getCartTotal = (state: RootState) => {
 };
 
 
-
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk)),
