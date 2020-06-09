@@ -65,7 +65,7 @@ const ProductsList: React.FC<Props> = ({ products, filter }) => {
   }, [currentCatalogProducts]);
 
   return (
-    <main className="products">
+    <div className="products">
       <div className="products__subtitle">
         {products && `${currentCatalogProducts.length} models`}
       </div>
@@ -136,7 +136,7 @@ const ProductsList: React.FC<Props> = ({ products, filter }) => {
           page={page}
         />
       )}
-    </main>
+    </div>
   );
 };
 

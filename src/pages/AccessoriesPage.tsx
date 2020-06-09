@@ -9,12 +9,12 @@ type Props = {
 
 const AccessoriesPage: React.FC<Props> = ({ products, filter }) => {
   return (
-    <main className="products">
-      <h1 className="products__title">
+    <>
+      <h1 className="page__title">
         Accessories
       </h1>
       <ProductsList products={products} filter={filter} />
-    </main>
+    </>
   );
 };
 

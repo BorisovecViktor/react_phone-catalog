@@ -8,6 +8,9 @@
 @import "./components/Favorites";
 @import "./components/Cart";
 @import "./components/BannerSlider";
+@import "./components/Categories";
+@import "./components/Category";
+@import "./components/ProductsСarousel";
 @import "./components/Footer";
 
 html {
@@ -21,7 +24,7 @@ html {
 }
 
 .section {
-  margin-bottom: 80px;
+  padding-bottom: 80px;
 }
 
 .visually-hidden {

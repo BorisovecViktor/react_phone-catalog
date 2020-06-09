@@ -8,4 +8,6 @@ export const SORT_BY = {
   releaseDate: 'release-date',
   priceAsc: 'price-asc',
   priceDesc: 'price-desc',
+  hotPrice: 'hotPrice',
+  newModels: 'newModels',
 };

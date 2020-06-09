@@ -4,13 +4,10 @@
 .product {
   display: flex;
   flex-direction: column;
-  border: 1px solid $border-section-color;
   padding: 24px;
-
-  &:hover {
-    @include hover(box-shadow, 0 2px 15px rgba(0, 0, 0, 0.05), 0.3);
-    cursor: pointer;
-  }
+  border: 1px solid $border-section-color;
+  @include hover(box-shadow, inset 0px 0px 10px 5px rgba(180,189,196,0.5), 0.3);
+  cursor: pointer;
 
   &__image {
     object-fit: cover;
