@@ -6,8 +6,8 @@ import { SORT_BY } from '../constants';
 import { carouselSort } from '../helpers/carouselSort';
 
 type Props = {
-  products: Product[]
-}
+  products: Product[];
+};
 
 const HomePage: React.FC<Props> = ({ products }) => {
   const hotPrices = carouselSort(products, SORT_BY.hotPrice);
@@ -35,7 +35,7 @@ const HomePage: React.FC<Props> = ({ products }) => {
         />
       </section>
     </>
-  )
+  );
 };
 
 export default HomePage;

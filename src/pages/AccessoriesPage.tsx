@@ -3,17 +3,16 @@ import React from 'react';
 import ProductsList from '../components/ProductsList';
 
 type Props = {
-  products: Product[];
   filter: string;
 };
 
-const AccessoriesPage: React.FC<Props> = ({ products, filter }) => {
+const AccessoriesPage: React.FC<Props> = ({ filter }) => {
   return (
     <>
       <h1 className="page__title">
         Accessories
       </h1>
-      <ProductsList products={products} filter={filter} />
+      <ProductsList filter={filter} />
     </>
   );
 };
