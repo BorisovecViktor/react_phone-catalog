@@ -16,3 +16,9 @@ interface Product {
   capacity: string;
   ram: string;
 }
+
+interface Category {
+  title: string,
+  link: string,
+  count: number,
+}

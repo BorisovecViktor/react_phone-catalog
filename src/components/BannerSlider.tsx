@@ -38,7 +38,7 @@ const BannerSlider = () => {
   )
 
   return (
-    <div className="slider">
+    <div className="slider__wrap">
       <div className="slider__container">
         <button
           type="button"
@@ -82,7 +82,7 @@ const BannerSlider = () => {
         {banners.map(banner => (
           <button
             type="button"
-            aria-label={`Got to ${banner.id + 1} slide`}
+            aria-label={`Go to ${banner.id + 1} slide`}
             key={banner.id}
             className={cn('slider__dot', {
               'slider__dot--active': activeBanner === banner.id

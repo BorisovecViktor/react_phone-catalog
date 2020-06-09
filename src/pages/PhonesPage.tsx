@@ -10,12 +10,12 @@ type Props = {
 
 const PhonesPage: React.FC<Props> = ({ products, filter }) => {
   return (
-    <main className="products">
-      <h1 className="products__title">
+    <>
+      <h1 className="page__title">
         Mobile phones
       </h1>
       <ProductsList products={products} filter={filter} />
-    </main>
+    </>
   );
 };
 
