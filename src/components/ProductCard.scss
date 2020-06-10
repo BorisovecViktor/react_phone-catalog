@@ -12,8 +12,8 @@
 
   &__image {
     display: block;
-    object-fit: cover;
-    width: 80%;
+    object-fit: scale-down;
+    width: 100%;
     margin: 20px auto 24px;
   }
 
@@ -52,6 +52,7 @@
   &__detail {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 8px;
   }
 
   &__detail-name {
@@ -87,21 +88,23 @@
     color: white;
     outline: none;
     cursor: pointer;
-    transition: background-color $transition-duration;
+    box-shadow: 0;
+    transition: box-shadow $transition-duration;
 
     &:hover {
-      background-color: white;
-      color: $primary-color;
-      border: 1px solid $input-border-color;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
     }
 
     &--active {
       color: $success-color;
       background-color: white;
       border: 1px solid $input-border-color;
+    }
 
+    &--remove {
       &:hover {
         color: $accent-color;
+        border-color: $accent-color;
       }
     }
   }
@@ -114,17 +117,16 @@
     background-repeat: no-repeat;
     background-position: center;
     outline: none;
-    transition: background-image $transition-duration;
+    transition: border-color $transition-duration;
     border: 1px solid $input-border-color;
+    cursor: pointer;
 
     &:hover {
-      border: 1px solid $border-section-color;
-      background-image: url(../img/icons/heart-full.svg);
-      cursor: pointer;
+      border: 1px solid $primary-color;
     }
 
     &--active {
-      background-color: $accent-color;
+      background-image: url(../img/icons/heart-full.svg);
     }
   }
 }

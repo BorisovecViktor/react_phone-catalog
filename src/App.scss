@@ -1,6 +1,6 @@
 @import "./styles/fonts";
 @import "./styles/reset";
-// @import "./styles/variables";
+@import "./styles/variables";
 @import "./styles/mixins";
 @import "./components/Header";
 @import "./components/Logo";
@@ -38,4 +38,10 @@ html {
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

@@ -7,16 +7,18 @@ import { FILTERS } from './constants';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import './App.scss';
+
 import HomePage from './pages/HomePage';
+import CartPage from './pages/CartPage';
 import PhonesPage from './pages/PhonesPage';
 import TabletsPage from './pages/TabletsPage';
-import AccessoriesPage from './pages/AccessoriesPage';
-import FavoritesPage from './pages/FavoritesPage';
-import ProductDetailsPage from './pages/ProductDetailsPage';
-import CartPage from './pages/CartPage';
 import NotFoundPage from './pages/NotFoundPage';
+import CheckoutPage from './pages/CheckoutPage';
+import FavoritesPage from './pages/FavoritesPage';
+import AccessoriesPage from './pages/AccessoriesPage';
+import ProductDetailsPage from './pages/ProductDetailsPage';
 
-import './App.scss';
 
 const App = () => {
   const products = useSelector(store.getProducts);
@@ -60,6 +62,7 @@ const App = () => {
             </Route>
             <Route path="/cart" component={CartPage} />
             <Route path="/favorites" component={FavoritesPage} />
+            <Route path="/checkout" component={CheckoutPage} />
             <Route component={NotFoundPage} />
           </Switch>
         </div>

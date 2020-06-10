@@ -37,6 +37,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
   const isAddedToFavourites = favourites.some((item: Product) => item.id === id);
 
   const [cartButtonText, setCartButtonText] = useState(isAddedToCart ? 'Added to cart' : 'Add to cart');
+  const [firstClick, setFirstClick] = useState(false);
 
   const handleClickToDetails = () => {
     history.push(`/${PRODUCT_PATHS[type]}/${id}`);
@@ -83,7 +84,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             Screen
           </div>
           <div className="product__detail-value">
-            {screen}
+            {screen || '-'}
           </div>
         </div>
         <div className="product__detail">
@@ -91,7 +92,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             Capacity
           </div>
           <div className="product__detail-value">
-            {capacity}
+            {capacity || '-'}
           </div>
         </div>
         <div className="product__detail">
@@ -99,7 +100,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             RAM
           </div>
           <div className="product__detail-value">
-            {ram}
+            {ram || '-'}
           </div>
         </div>
       </div>
@@ -108,6 +109,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           className={classNames(
             'product__button-buy',
             { 'product__button-buy--active': isAddedToCart },
+            { 'product__button-buy--remove': firstClick },
           )}
           type="button"
           onClick={(e) => {
@@ -116,6 +118,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             if (isAddedToCart) {
               dispatch(removeFromCart(id));
               setCartButtonText('Add to cart');
+              setFirstClick(false);
             } else {
               dispatch(addToCart(id, 1, product));
               setCartButtonText('Added to cart');
@@ -131,6 +134,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           onMouseLeave={() => {
             if (isAddedToCart) {
               setCartButtonText('Added to cart');
+              setFirstClick(true);
             }
           }}
         >
