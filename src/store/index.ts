@@ -104,7 +104,7 @@ export const getCartTotal = (state: RootState) => {
   let cartTotal = 0;
 
   state.cart.forEach(cartProduct => {
-    cartTotal += cartProduct.product.price;
+    cartTotal += cartProduct.product.price * cartProduct.quantity;
   });
 
   return cartTotal;
