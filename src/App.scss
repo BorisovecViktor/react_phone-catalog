@@ -16,6 +16,7 @@
 @import "./components/Breadcrumbs";
 
 html {
+  @include scrollbar-style;
   font-family: Mont, Arial, Helvetica, sans-serif;
   color: $primary-color;
 }

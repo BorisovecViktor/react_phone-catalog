@@ -2,20 +2,23 @@ import React from 'react';
 
 import ProductsList from '../components/ProductsList';
 import Breadcrumbs from '../components/Breadcrumbs';
+import { useSelector } from 'react-redux';
+import * as store from '../store';
 
 type Props = {
-  products: Product[];
   filter: string;
 };
 
-const TabletsPage: React.FC<Props> = ({ products, filter }) => {
+const TabletsPage: React.FC<Props> = ({ filter }) => {
+  const products = useSelector(store.getProducts);
+
   return (
     <>
       <Breadcrumbs products={products} />
       <h1 className="page__title">
         Tablets
       </h1>
-      <ProductsList products={products} filter={filter} />
+      <ProductsList filter={filter} />
     </>
   );
 };

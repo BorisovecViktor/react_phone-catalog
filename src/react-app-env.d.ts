@@ -5,7 +5,7 @@ interface NavLinkType {
 
 interface Product {
   age: number;
-  id: number;
+  id: string;
   type: string;
   imageUrl: string;
   name: string;
@@ -15,12 +15,19 @@ interface Product {
   screen: string;
   capacity: string;
   ram: string;
+  type: string;
 }
 
 interface Category {
-  title: string,
-  link: string,
-  count: number,
+  title: string;
+  link: string;
+  count: number;
+}
+
+interface Cart {
+  id: string;
+  quantity: number;
+  product: Product;
 }
 
 interface Camera {

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { getProducts } from './helpers/api';
+import * as store from './store';
 import { FILTERS } from './constants';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -18,14 +19,12 @@ import NotFoundPage from './pages/NotFoundPage';
 import './App.scss';
 
 const App = () => {
-  const [products, setProducts] = useState([]);
+  const products = useSelector(store.getProducts);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getProducts()
-      .then(people => {
-        setProducts(people);
-      });
-  }, []);
+    dispatch(store.loadProducts());
+  }, [dispatch]);
 
   return (
     <div className="app">
@@ -46,19 +45,16 @@ const App = () => {
             </Route>
             <Route path="/phones">
               <PhonesPage
-                products={products}
                 filter={FILTERS.phones}
               />
             </Route>
             <Route path="/tablets">
               <TabletsPage
-                products={products}
                 filter={FILTERS.tablets}
               />
             </Route>
             <Route path="/accessories">
               <AccessoriesPage
-                products={products}
                 filter={FILTERS.accessories}
               />
             </Route>

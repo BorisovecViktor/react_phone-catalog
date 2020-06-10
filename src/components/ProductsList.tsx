@@ -1,60 +1,49 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import ProductCard from './ProductCard';
 import './ProductsList.scss';
+import * as store from '../store';
+import { setFilterBy } from '../store/filter';
+import { setSortBy } from '../store/sort';
 import { SORT_BY } from '../constants';
+import { setPage, setPerPage } from '../store/pagination';
+import ProductCard from './ProductCard';
 import Pagination from './Pagination';
 
-
 type Props = {
-  products: Product[];
   filter: string;
 };
 
-const ProductsList: React.FC<Props> = ({ products, filter }) => {
+const ProductsList: React.FC<Props> = ({ filter }) => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
+  const categoryLength = useSelector(store.getCategoryLength);
   const searchParams = new URLSearchParams(location.search);
-  const sortBy = searchParams.get('sort') || SORT_BY.releaseDate;
+  const sortBy = searchParams.get('sortBy') || SORT_BY.releaseDate;
   const page = +(searchParams.get('page') || 1);
+  const perPage = +(searchParams.get('perPage') || categoryLength);
+  const visibleProducts = useSelector(store.getVisibleProducts);
 
-  const currentCatalogProducts = useMemo(() => {
-    const result = products.filter(product => product.type === filter);
+  useEffect(() => {
+    dispatch(setSortBy(sortBy));
+  }, [dispatch, sortBy]);
 
-    switch (sortBy) {
-      case SORT_BY.priceAsc:
-        result.sort((a, b) => a.price - b.price);
-        break;
-      case SORT_BY.priceDesc:
-        result.sort((a, b) => b.price - a.price);
-        break;
-      default:
-        result.sort((a, b) => a.age - b.age);
-        break;
-    }
+  useEffect(() => {
+    dispatch(setPage(page));
+  }, [dispatch, page]);
 
-    return result;
-  }, [products, filter, sortBy]);
+  useEffect(() => {
+    dispatch(setFilterBy(filter));
+  }, [dispatch, filter]);
 
-  const perPage = +(searchParams.get('show') || currentCatalogProducts.length);
+  useEffect(() => {
+    dispatch(setPerPage(perPage));
+  }, [dispatch, perPage]);
 
-  const currentPageProducts = useMemo(() => {
-    let endId = (perPage * page) - 1;
-    const startId = page === 1 ? page - 1 : (endId - perPage) + 1;
-
-    if (endId > currentCatalogProducts.length) {
-      endId = currentCatalogProducts.length;
-    }
-
-    const result = currentCatalogProducts
-      .filter((_product, index) => index >= startId && index <= endId);
-
-    return result;
-  }, [perPage, page, currentCatalogProducts]);
-
-  const showOptions = useMemo(() => {
-    const productsAmount = currentCatalogProducts.length;
+  const perPageOptions = useMemo(() => {
+    const productsAmount = categoryLength;
     const options = [];
 
     for (let i = 4; i < productsAmount; i *= 2) {
@@ -62,12 +51,13 @@ const ProductsList: React.FC<Props> = ({ products, filter }) => {
     }
 
     return options.length === 0 ? [4] : options;
-  }, [currentCatalogProducts]);
+  }, [categoryLength]);
+
 
   return (
     <div className="products">
       <div className="products__subtitle">
-        {products && `${currentCatalogProducts.length} models`}
+        {visibleProducts && `${categoryLength} models`}
       </div>
       <div className="products__filters">
         <div className="products__filter">
@@ -79,7 +69,7 @@ const ProductsList: React.FC<Props> = ({ products, filter }) => {
             className="products__filter-select"
             onChange={
               ({ target }) => {
-                searchParams.set('sort', target.value);
+                searchParams.set('sortBy', target.value);
                 searchParams.set('page', String(1));
                 history.push({
                   search: searchParams.toString(),
@@ -105,7 +95,7 @@ const ProductsList: React.FC<Props> = ({ products, filter }) => {
           <select
             value={perPage}
             onChange={({ target }) => {
-              searchParams.set('show', target.value);
+              searchParams.set('perPage', target.value);
               searchParams.set('page', String(1));
               history.push({
                 search: searchParams.toString(),
@@ -114,24 +104,26 @@ const ProductsList: React.FC<Props> = ({ products, filter }) => {
             className="products__filter-select"
           >
             <option
-              value={products.length}
+              value={categoryLength}
             >
               All
             </option>
-            {showOptions.map(show => (
-              <option key={show}>{show}</option>
+            {perPageOptions.map(show => (
+              <option key={show}>
+                {show}
+              </option>
             ))}
           </select>
         </div>
       </div>
       <div className="products__list">
-        {currentPageProducts.map(product => (
+        {visibleProducts.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-      {currentCatalogProducts.length !== currentPageProducts.length && (
+      {categoryLength !== visibleProducts.length && (
         <Pagination
-          total={currentCatalogProducts.length}
+          total={categoryLength}
           perPage={perPage}
           page={page}
         />
