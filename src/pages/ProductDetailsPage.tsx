@@ -35,15 +35,11 @@ const ProductDetailsPage: React.FC<Props> = ({ products }) => {
   return (
     <>
       <section className="section details">
-        <Breadcrumbs products={products} />
+        <Breadcrumbs />
         <GoBackButton />
         <h1 className="details__header">{productDetails.name}</h1>
-        <div className="details__group-wrapper">
-          {/* <Gallery
-            images={productDetails.images} /> */}
-          {/* <Card product={product} productDetails={productDetails}/> */}
+        <div className="details__container">
           <ProductDescription {...productDetails} />
-          {/* <TechSpecs product={product} productDetails={productDetails} /> */}
         </div>
       </section>
       <section className="section сarousel">
@@ -54,4 +50,3 @@ const ProductDetailsPage: React.FC<Props> = ({ products }) => {
 }
 
 export default ProductDetailsPage;
-

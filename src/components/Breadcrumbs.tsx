@@ -2,11 +2,7 @@ import React, { useMemo } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
 
-type Props = {
-  products: Product[];
-}
-
-const Breadcrumbs: React.FC<Props> = ({ products }) => {
+const Breadcrumbs = () => {
   const location = useLocation();
   const preparedLabels = useMemo(() => (
     location.pathname
@@ -18,7 +14,6 @@ const Breadcrumbs: React.FC<Props> = ({ products }) => {
     preparedLabels
       .reduce((accum: string[], item) => [...accum, `${accum}/${item}`], [])
   ), [preparedLabels]);
-console.log(preparedBreadcrumbs , preparedLabels);
 
   return (
     <ul className="details__breadcrumbs breadcrumbs">
@@ -29,7 +24,6 @@ console.log(preparedBreadcrumbs , preparedLabels);
       />
       {preparedBreadcrumbs.map((crumb, index) => (
         <Breadcrumb
-          products={products}
           label={preparedLabels[index]}
           link={crumb}
           key={crumb}
