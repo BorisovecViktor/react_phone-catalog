@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ProductsList from '../components/ProductsList';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 type Props = {
   products: Product[];
@@ -10,6 +11,7 @@ type Props = {
 const TabletsPage: React.FC<Props> = ({ products, filter }) => {
   return (
     <>
+      <Breadcrumbs products={products} />
       <h1 className="page__title">
         Tablets
       </h1>

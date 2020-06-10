@@ -39,6 +39,11 @@ const App = () => {
                 products={products}
               />
             </Route>
+            <Route path="/:productType/:productId">
+              <ProductDetailsPage
+                products={products}
+              />
+            </Route>
             <Route path="/phones">
               <PhonesPage
                 products={products}
@@ -57,7 +62,6 @@ const App = () => {
                 filter={FILTERS.accessories}
               />
             </Route>
-            <Route path="/product-details" component={ProductDetailsPage} />
             <Route path="/cart" component={CartPage} />
             <Route path="/favorites" component={FavoritesPage} />
             <Route component={NotFoundPage} />

@@ -1,0 +1,20 @@
+.button-back {
+  position: relative;
+  font-size: 12px;
+  font-weight: 600;
+  padding-left: 15px;
+  background-color: #fff;
+  color: $secondary-color;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  @include hover(color, $primary-color, 0.3);
+
+  &::before {
+    position: absolute;
+    content: url("../img/icons/goback-arrow.svg");
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

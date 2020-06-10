@@ -11,3 +11,8 @@ export const SORT_BY = {
   hotPrice: 'hotPrice',
   newModels: 'newModels',
 };
+
+export const PRODUCT_PATHS: ProductPaths = {
+  phone: 'phones',
+  tablet: 'tablets',
+};
