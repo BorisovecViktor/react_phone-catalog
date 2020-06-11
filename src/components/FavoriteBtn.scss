@@ -7,17 +7,16 @@
     background-repeat: no-repeat;
     background-position: center;
     outline: none;
-    transition: background-image $transition-duration;
+    transition: border-color $transition-duration;
     border: 1px solid $input-border-color;
+    cursor: pointer;
 
     &:hover {
-      border: 1px solid $border-section-color;
-      background-image: url(../img/icons/heart-full.svg);
-      cursor: pointer;
+      border: 1px solid $primary-color;
     }
 
     &--active {
-      background-color: $accent-color;
+      background-image: url(../img/icons/heart-full.svg);
     }
   }
 }

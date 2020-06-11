@@ -24,9 +24,11 @@ const ProductCard: React.FC<Props> = ({ product }) => {
     ram,
   } = product;
 
-  const backToTop = useCallback(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const backToTop = useCallback(
+    () => {
+      window.scrollTo(0, 0);
+    }, []
+  );
 
   return (
     <article className="product">
@@ -54,7 +56,9 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             </div>
             <div className="spec__info">
               {screen}
+
             </div>
+
           </div>
           <div className="spec__container">
             <div className="spec__title">
@@ -82,7 +86,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           />
         </div>
       </Link>
-    </article>
+    </article >
   );
 };
 

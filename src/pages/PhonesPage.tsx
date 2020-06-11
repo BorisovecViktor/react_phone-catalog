@@ -13,7 +13,7 @@ const PhonesPage: React.FC<Props> = ({ filter }) => (
     <Breadcrumbs />
     <h1 className="page__title">
       Mobile phones
-      </h1>
+    </h1>
     <ProductsList filter={filter} />
   </>
 );

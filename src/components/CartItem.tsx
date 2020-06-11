@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
 
 import './CartItem.scss';
@@ -22,10 +23,11 @@ const CartItem: React.FC<Props> = ({ product, quantity }) => {
   return (
     <li className="cart__item">
       <button
+        className="cart__item-remove"
         type="button"
         onClick={() => dispatch(removeFromCart(id))}
       >
-        x
+        {' '}
       </button>
       <div>
         <img
@@ -34,26 +36,33 @@ const CartItem: React.FC<Props> = ({ product, quantity }) => {
           alt={name}
         />
       </div>
-      <div>
+      <div className="cart__item-title">
         {name}
       </div>
-      <div>
+      <div className="cart__item-actions">
         <button
+          className="cart__item-button-plus"
           type="button"
           onClick={() => dispatch(setCartAmount(id, +1))}
         >
-          +
+          {' '}
         </button>
-        {quantity}
+        <div className="cart__item-quantity">
+          {quantity}
+        </div>
         <button
+          className={classNames(
+            'cart__item-button-minus',
+            { 'cart__item-button-minus--disabled': quantity === 1 },
+          )}
           type="button"
           onClick={() => dispatch(setCartAmount(id, -1))}
         >
-          -
+          {' '}
         </button>
       </div>
-      <div>
-        {price}
+      <div className="cart__item-price">
+        {`$${price}`}
       </div>
     </li>
   );
