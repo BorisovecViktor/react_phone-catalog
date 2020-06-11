@@ -6,7 +6,7 @@
   flex-direction: column;
   padding: 24px;
   border: 1px solid $border-section-color;
-  @include hover(box-shadow, inset 0 0 10px 5px rgba(180,189,196,0.5), 0.3);
+  @include hover(box-shadow, 0 0 10px 5px rgba(180,189,196,0.5), 0.3);
   color: $primary-color;
   cursor: pointer;
 
@@ -14,7 +14,7 @@
     display: block;
     object-fit: scale-down;
     width: 100%;
-    margin: 20px auto 24px;
+    padding-bottom: 10px;
   }
 
   &__title {
