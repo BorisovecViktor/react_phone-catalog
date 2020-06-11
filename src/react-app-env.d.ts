@@ -30,39 +30,67 @@ interface Cart {
   product: Product;
 }
 
-interface Camera {
-  primary: string;
-}
-
-interface Connectivity {
-  cell: string;
-}
-
-interface Display {
-  screenResolution: string;
-}
-
-interface Hardware {
-  cpu: string;
-}
+interface ProductGalleryProps {
+  images: string[];
+  title: string;
+};
 
 interface ProductDetails {
   additionalFeatures: string;
-  android: Object;
+  android: {
+    os: string;
+    ui: string;
+  };
   availability: string[];
-  battery: Object;
-  camera: Camera;
-  connectivity: Connectivity;
+  battery: {
+    standbyTime: string;
+    talkTime: string;
+    type: string;
+  };
+  camera: {
+    features: string[];
+    primary: string;
+  };
+  connectivity: {
+    bluetooth: string;
+    cell: string;
+    gps: boolean;
+    infrared: boolean;
+    wifi: string;
+  };
   description: string;
-  display: Display;
-  hardware: Hardware;
+  display: {
+    screenResolution: string;
+    screenSize: string;
+    touchScreen: boolean;
+  };
+  hardware: {
+    accelerometer: boolean;
+    audioJack: string;
+    cpu: string;
+    fmRadio: boolean;
+    physicalKeyboard: boolean;
+    usb: string;
+  };
   id: string;
   images: string[];
   name: string;
-  sizeAndWeight: Object;
-  storage: Object;
+  sizeAndWeight: {
+    dimensions: string[];
+    weight: string;
+  };
+  storage: {
+    flash: string;
+    ram: string;
+  };
 }
 
 interface ProductPaths {
   [key: string]: string;
 }
+
+interface ProductPriceProps {
+  price: number;
+  discount: number;
+  styleSize?: string;
+};

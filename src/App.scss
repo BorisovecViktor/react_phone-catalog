@@ -14,6 +14,12 @@
 @import "./components/Footer";
 @import "./components/GoBackButton";
 @import "./components/Breadcrumbs";
+@import "./components/ProductGallery";
+@import "./components/ProductTechSpecs";
+@import "./components/ProductPrice";
+@import "./components/AddProductBtn";
+@import "./components/FavoriteBtn";
+@import "./components/ProductShortSpecs";
 
 html {
   @include scrollbar-style;

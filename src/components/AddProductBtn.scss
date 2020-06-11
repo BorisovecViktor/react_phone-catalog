@@ -1,0 +1,35 @@
+.product {
+  &__button-buy {
+    flex-grow: 2;
+    height: 40px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    border: transparent;
+    margin-right: 8px;
+    background-color: $primary-color;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    transition: background-color $transition-duration;
+
+    &:hover {
+      background-color: white;
+      color: $primary-color;
+      border: 1px solid $input-border-color;
+    }
+
+    &--active {
+      color: $success-color;
+      background-color: white;
+      border: 1px solid $input-border-color;
+
+      &:hover {
+        background-color: $success-color;
+        color: white;
+        border: 1px solid $input-border-color;
+      }
+    }
+  }
+}

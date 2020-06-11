@@ -8,7 +8,7 @@ const GoBackButton = () => {
   return (
     <button
       type="button"
-      className="details__button-back button-back"
+      className="product-details__button-back button-back"
       onClick={goBack}
     >
       Back

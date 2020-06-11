@@ -16,7 +16,7 @@ const Breadcrumbs = () => {
   ), [preparedLabels]);
 
   return (
-    <ul className="details__breadcrumbs breadcrumbs">
+    <ul className="breadcrumbs">
       <NavLink
         to="/"
         className="breadcrumbs__item breadcrumbs__home"

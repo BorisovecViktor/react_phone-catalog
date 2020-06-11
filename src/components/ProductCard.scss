@@ -21,20 +21,6 @@
     line-height: 21px;
   }
 
-  &__prices {
-    display: flex;
-    margin-top: 6px;
-    font-size: 22px;
-    line-height: 140%;
-    font-weight: 700;
-  }
-
-  &__old-price {
-    text-decoration: line-through;
-    margin-left: 8px;
-    color: $secondary-color;
-  }
-
   &__divider {
     margin-top: 8px;
     height: 1px;
@@ -42,88 +28,10 @@
     background-color: $border-section-color;
   }
 
-  &__details {
-    margin-top: 16px;
-  }
-
-  &__detail {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__detail-name {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    color: $secondary-color;
-  }
-
-  &__detail-value {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-  }
-
   &__actions {
     display: flex;
     margin-top: 16px;
     align-items: flex-end;
     flex-grow: 2;
-  }
-
-  &__button-buy {
-    flex-grow: 2;
-    height: 40px;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
-    border: transparent;
-    margin-right: 8px;
-    background-color: $primary-color;
-    color: white;
-    outline: none;
-    cursor: pointer;
-    transition: background-color $transition-duration;
-
-    &:hover {
-      background-color: white;
-      color: $primary-color;
-      border: 1px solid $input-border-color;
-    }
-
-    &--active {
-      color: $success-color;
-      background-color: white;
-      border: 1px solid $input-border-color;
-
-      &:hover {
-        background-color: $success-color;
-        color: white;
-        border: 1px solid $input-border-color;
-      }
-    }
-  }
-
-  &__button-favorite {
-    height: 40px;
-    flex-basis: 40px;
-    background-color: white;
-    background-image: url(../img/icons/heart-empty.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    outline: none;
-    transition: background-image $transition-duration;
-    border: 1px solid $input-border-color;
-
-    &:hover {
-      border: 1px solid $border-section-color;
-      background-image: url(../img/icons/heart-full.svg);
-      cursor: pointer;
-    }
-
-    &--active {
-      background-color: $accent-color;
-    }
   }
 }

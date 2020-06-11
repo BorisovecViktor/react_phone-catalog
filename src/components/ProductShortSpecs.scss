@@ -1,0 +1,21 @@
+.spec {
+  margin-top: 16px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+
+  &__info {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

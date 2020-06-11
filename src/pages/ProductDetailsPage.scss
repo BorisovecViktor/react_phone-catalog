@@ -1,12 +1,23 @@
 @import "../styles/variables";
 
-.details {
-  &__breadcrumbs {
-    margin-bottom: 40px;
+.product-details {
+  &__button-back {
+    margin: 40px 0 16px;
   }
 
-  &__button-back {
-    margin-bottom: 16px;
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  &__flex-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__wrap {
+    width: 50%;
   }
 
   &__title {
