@@ -1,0 +1,50 @@
+@import "../styles/variables";
+
+.search {
+  display: flex;
+  position: relative;
+  height: 65px;
+  box-sizing: border-box;
+
+  &__input {
+    padding: 24px;
+    margin-right: -1px;
+    width: 320px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    outline: none;
+    border: 1px solid $border-section-color;
+
+    &::placeholder {
+      color: $input-border-color;
+    }
+
+    &:focus {
+      background-color: $input-search-active;
+    }
+  }
+
+  &__delete-btn,
+  &__icon {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+  }
+
+  &__icon {
+    background-image: url("../img/icons/search.svg");
+  }
+
+  &__delete-btn {
+    background-color: transparent;
+    background-image: url("../img/icons/close.svg");
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+}

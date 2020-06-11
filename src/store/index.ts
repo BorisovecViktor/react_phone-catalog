@@ -12,6 +12,7 @@ import sortReducer from './sort';
 import paginationReducer from './pagination';
 import cartReducer from './cart';
 import favouritesReducer from './favourites';
+import searchReducer from './search';
 
 
 const rootReducer = combineReducers({
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   pagination: paginationReducer,
   cart: cartReducer,
   favourites: favouritesReducer,
+  searchQuery: searchReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
