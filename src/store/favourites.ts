@@ -27,7 +27,7 @@ const reducer = (favourites: Product[] = [], action: PossibleActions) => {
       return [...favourites, action.product];
 
     case REMOVE_FAVOURITE:
-      return [...favourites].filter(product => product !== action.product);
+      return [...favourites].filter(product => product.id !== action.product.id);
 
     default:
       return favourites;

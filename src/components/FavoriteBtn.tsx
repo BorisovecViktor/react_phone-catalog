@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import * as store from '../store';
 import { useDispatch, useSelector } from 'react-redux';
+
+import * as store from '../store';
 import { addToFavourites, removeFromFavourites } from '../store/favourites';
 
 type Props = {
@@ -22,7 +23,9 @@ const FavoriteBtn: React.FC<Props> = ({ product }) => {
         { 'product__button-favorite--active': isAddedToFavourites },
       )}
       type="button"
-      onClick={() => {
+      onClick={(e) => {
+        e.stopPropagation();
+
         if (isAddedToFavourites) {
           dispatch(removeFromFavourites(product));
         } else {
@@ -32,7 +35,7 @@ const FavoriteBtn: React.FC<Props> = ({ product }) => {
     >
       {' '}
     </button>
-  )
-}
+  );
+};
 
 export default FavoriteBtn;
