@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import * as store from './store';
@@ -45,17 +49,17 @@ const App = () => {
                 products={products}
               />
             </Route>
-            <Route path="/phones">
+            <Route path="/phones" exact>
               <PhonesPage
                 filter={FILTERS.phones}
               />
             </Route>
-            <Route path="/tablets">
+            <Route path="/tablets" exact>
               <TabletsPage
                 filter={FILTERS.tablets}
               />
             </Route>
-            <Route path="/accessories">
+            <Route path="/accessories" exact>
               <AccessoriesPage
                 filter={FILTERS.accessories}
               />

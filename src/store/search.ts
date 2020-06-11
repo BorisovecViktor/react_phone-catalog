@@ -13,7 +13,7 @@ type PossibleActions = setQueryAction;
 const reducer = (searchQuery = '', action: PossibleActions) => {
   switch (action.type) {
     case SET_QUERY:
-      return action.field;
+      return (action.field).toLowerCase().trim();
 
     default:
       return searchQuery;

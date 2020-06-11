@@ -25,6 +25,7 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
   const page = +(searchParams.get('page') || 1);
   const perPage = +(searchParams.get('perPage') || categoryLength);
   const visibleProducts = useSelector(store.getVisibleProducts);
+  const searchQuery = useSelector(store.getSearchQuery);
 
   useEffect(() => {
     dispatch(setSortBy(sortBy));
@@ -57,76 +58,103 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
   return (
     <div className="products">
       <div className="products__subtitle">
-        {visibleProducts && `${categoryLength} models`}
+        {
+          (visibleProducts && searchQuery === '')
+            ? `${categoryLength} models`
+            : `${visibleProducts.length} results`
+        }
       </div>
-      <div className="products__filters">
-        <div className="products__filter">
-          <div className="products__filter-title">
-            Sort by
+      {(searchQuery === '' && visibleProducts.length !== 0) && (
+        <div className="products__filters">
+          <div className="products__filter">
+            <div className="products__filter-title">
+              Sort by
+            </div>
+            <select
+              value={sortBy}
+              className="products__filter-select"
+              onChange={
+                ({ target }) => {
+                  searchParams.set('sortBy', target.value);
+                  searchParams.set('page', String(1));
+                  history.push({
+                    search: searchParams.toString(),
+                  });
+                }
+              }
+            >
+              <option value={SORT_BY.releaseDate}>
+                Newest Arrivals
+              </option>
+              <option value={SORT_BY.priceAsc}>
+                Price: Low to High
+              </option>
+              <option value={SORT_BY.priceDesc}>
+                Price: High to Low
+              </option>
+            </select>
           </div>
-          <select
-            value={sortBy}
-            className="products__filter-select"
-            onChange={
-              ({ target }) => {
-                searchParams.set('sortBy', target.value);
+          <div className="products__filter">
+            <div className="products__filter-title">
+              Items on page
+            </div>
+            <select
+              value={perPage}
+              onChange={({ target }) => {
+                searchParams.set('perPage', target.value);
                 searchParams.set('page', String(1));
                 history.push({
                   search: searchParams.toString(),
                 });
-              }
-            }
-          >
-            <option value={SORT_BY.releaseDate}>
-              Newest Arrivals
-            </option>
-            <option value={SORT_BY.priceAsc}>
-              Price: Low to High
-            </option>
-            <option value={SORT_BY.priceDesc}>
-              Price: High to Low
-            </option>
-          </select>
-        </div>
-        <div className="products__filter">
-          <div className="products__filter-title">
-            Items on page
-          </div>
-          <select
-            value={perPage}
-            onChange={({ target }) => {
-              searchParams.set('perPage', target.value);
-              searchParams.set('page', String(1));
-              history.push({
-                search: searchParams.toString(),
-              });
-            }}
-            className="products__filter-select"
-          >
-            <option
-              value={categoryLength}
+              }}
+              className="products__filter-select"
             >
-              All
-            </option>
-            {perPageOptions.map(show => (
-              <option key={show}>
-                {show}
+              <option
+                value={categoryLength}
+              >
+                All
               </option>
-            ))}
-          </select>
+              {perPageOptions.map(show => (
+                <option key={show}>
+                  {show}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-      </div>
+      )}
+
       <div className="products__list">
         {visibleProducts.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-      {categoryLength !== visibleProducts.length && (
+      {(categoryLength !== visibleProducts.length && searchQuery === '') && (
         <Pagination
           total={categoryLength}
           perPage={perPage}
           page={page}
         />
+      )}
+
+      {searchQuery !== '' && visibleProducts.length === 0 && (
+        <div className="products__search">
+          <div className="products__search-title">
+            No items were found for
+            <span className="products__search-query">
+              {` "${searchQuery}"`}
+            </span>
+          </div>
+          <div className="products__search-subtitle">
+            Please try another search.
+          </div>
+        </div>
+      )}
+
+      {searchQuery === '' && visibleProducts.length === 0 && (
+        <div className="products__message">
+          No items in category
+        </div>
       )}
     </div>
   );

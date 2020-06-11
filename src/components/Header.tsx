@@ -19,7 +19,6 @@ const Header = () => {
   const searchAvailable = [
     'tablets',
     'phones',
-    'favorites',
     'accessories',
   ];
 

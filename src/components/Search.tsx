@@ -1,21 +1,42 @@
-import React, { useState, useRef } from 'react';
+import React, {
+  useRef,
+  useState,
+  useCallback,
+  useEffect,
+  // useEffect,
+} from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import './Search.scss';
 import { setSearchQuery } from '../store/search';
+import { debounce } from '../helpers/debounce';
+// import * as store from '../store';
 
 type Props = {
   currentLocation: string;
 };
 
 const Search: React.FC<Props> = ({ currentLocation }) => {
-  const [query, setQuery] = useState('');
-  const inputEl = useRef<HTMLInputElement>(null);
   const history = useHistory();
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
   const dispatch = useDispatch();
+  const location = useLocation();
+  const inputEl = useRef<HTMLInputElement>(null);
+  const searchParams = new URLSearchParams(location.search);
+  const [query, setQuery] = useState(searchParams.get('search') || '');
+
+  const handleSearchInput = useCallback(debounce((value: string) => {
+    dispatch(setSearchQuery(value));
+  }, 200), []);
+
+  useEffect(() => {
+    handleSearchInput(query);
+  }, [query, handleSearchInput]);
+
+  useEffect(() => {
+    setSearchQuery('');
+    setQuery('');
+  }, [currentLocation]);
 
   return (
     <div className="header__search search">
@@ -25,8 +46,8 @@ const Search: React.FC<Props> = ({ currentLocation }) => {
         value={query}
         type="text"
         onChange={e => {
+          handleSearchInput(e.currentTarget.value);
           setQuery(e.currentTarget.value);
-          dispatch(setSearchQuery(e.currentTarget.value));
           searchParams.set('query', e.currentTarget.value);
           history.push({
             search: searchParams.toString(),
@@ -52,8 +73,8 @@ const Search: React.FC<Props> = ({ currentLocation }) => {
           {' '}
         </button>
       ) : (
-          <span className="search__icon" />
-        )}
+        <span className="search__icon" />
+      )}
 
     </div>
   );

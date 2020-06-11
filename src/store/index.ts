@@ -34,6 +34,7 @@ export const getPage = (state: RootState) => state.pagination.page;
 export const getCart = (state: RootState) => state.cart;
 export const getCartLength = (state: RootState) => state.cart.length;
 export const getFavourites = (state: RootState) => state.favourites;
+export const getSearchQuery = (state: RootState) => state.searchQuery;
 
 export const loadProducts = () => {
   return async (dispatch: Dispatch<unknown>) => {
@@ -54,9 +55,17 @@ export const getCategoryLength = (state: RootState) => {
 };
 
 export const getVisibleProducts = (state: RootState) => {
-  const visibleProducts: Product[] = state.products.filter((item: Product) => {
+  let visibleProducts: Product[] = state.products.filter((item: Product) => {
     if (state.filterBy !== '') {
       return item.type === state.filterBy;
+    }
+
+    return item;
+  });
+
+  visibleProducts = visibleProducts.filter((item: Product) => {
+    if (state.searchQuery !== '') {
+      return item.name.toLowerCase().includes(state.searchQuery);
     }
 
     return item;
