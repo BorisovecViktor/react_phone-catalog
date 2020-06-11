@@ -1,13 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './CartPage.scss';
 
 import * as store from '../store';
 import CartList from '../components/CartList';
+import { clearCart } from '../store/cart';
 
 const CartPage = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const totalCart = useSelector(store.getCartTotal);
   const cartLength = useSelector(store.getCartLength);
@@ -40,7 +42,10 @@ const CartPage = () => {
               <button
                 className="cart-page__total-checkout"
                 type="button"
-                onClick={() => history.push('/checkout')}
+                onClick={() => {
+                  history.push('/checkout');
+                  dispatch(clearCart());
+                }}
               >
                 Checkout
               </button>
@@ -49,10 +54,10 @@ const CartPage = () => {
 
         </div>
       ) : (
-          <div className="cart-page__message">
-            Your cart is empty
-          </div>
-        )}
+        <div className="cart-page__message">
+          Your cart is empty
+        </div>
+      )}
     </div>
   );
 };

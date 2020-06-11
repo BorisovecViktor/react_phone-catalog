@@ -114,7 +114,6 @@ const persistedState = localStorage.getItem('rootState')
   ? JSON.parse(localStorage.getItem('rootState') || '')
   : {};
 
-
 const store = createStore(
   rootReducer,
   persistedState,

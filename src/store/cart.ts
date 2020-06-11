@@ -4,6 +4,7 @@ import { Action } from 'redux';
 const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const SET_CART_AMOUNT = 'SET_CART_AMOUNT';
+const CLEAR_CART = 'CLEAR_CART';
 
 type addToCartAction = Action<typeof ADD_TO_CART> & {
   id: string;
@@ -15,10 +16,12 @@ type removeFromCartAction = Action<typeof REMOVE_FROM_CART> & {
   id: string;
 };
 
-type setCartAmount = Action<typeof SET_CART_AMOUNT> & {
+type setCartAmountAction = Action<typeof SET_CART_AMOUNT> & {
   id: string;
   amount: number;
 };
+
+type clearCartAction = Action<typeof CLEAR_CART>;
 
 export const addToCart = (id: string, quantity: number, product: Product) => ({
   type: ADD_TO_CART,
@@ -35,7 +38,9 @@ export const setCartAmount = (id: string, amount: number) => ({
   amount,
 });
 
-type PossibleActions = addToCartAction | removeFromCartAction | setCartAmount;
+export const clearCart = () => ({ type: CLEAR_CART });
+
+type PossibleActions = addToCartAction | removeFromCartAction | setCartAmountAction | clearCartAction;
 
 const reducer = (cart: Cart[] = [], action: PossibleActions) => {
   switch (action.type) {
@@ -65,6 +70,9 @@ const reducer = (cart: Cart[] = [], action: PossibleActions) => {
 
         return product;
       });
+
+    case CLEAR_CART:
+      return [];
 
     default:
       return cart;

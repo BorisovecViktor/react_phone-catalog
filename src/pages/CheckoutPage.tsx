@@ -15,10 +15,9 @@ const CheckoutPage = () => {
           className="checkout__link"
           onClick={() => history.push('/')}
         >
-          Back to main page
+          Back to Main Page
         </button>
       </div>
-
     </div>
   );
 };
