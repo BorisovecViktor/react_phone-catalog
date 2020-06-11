@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProductPrice = ({ price, discount }: ProductPriceProps) => (
-  <div className="product__prices">
+  <>
     {discount ? (
       <>
         <div className="product__price">
@@ -19,7 +19,7 @@ const ProductPrice = ({ price, discount }: ProductPriceProps) => (
           {price}
         </div>
       )}
-  </div>
+  </>
 );
 
 export default ProductPrice;

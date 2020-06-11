@@ -2,13 +2,15 @@
 
 .product-details {
   &__button-back {
-    margin: 40px 0 16px;
+    margin-top: 40px;
   }
 
   &__container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 64px;
+    grid-row-gap: 80px;
+    margin-top: 40px;
   }
 
   &__flex-wrap {
@@ -17,7 +19,21 @@
   }
 
   &__wrap {
-    width: 50%;
+    width: 60%;
+  }
+
+  &__prices {
+    margin-top: 0;
+  }
+
+  &__spec {
+    margin-top: 32px;
+  }
+
+  &__id {
+    font-size: 12px;
+    font-weight: 600;
+    color: $border-btn-color;
   }
 
   &__title {
@@ -25,6 +41,7 @@
     font-size: 22px;
     line-height: 1.4;
     margin-bottom: 48px;
+    font-weight: bold;
 
     &::after {
       content: "";
@@ -47,7 +64,10 @@
   &__text {
     font-size: 14px;
     line-height: 1.5;
-    margin-bottom: 32px;
     color: $secondary-color;
+  }
+
+  &__text:not(:last-child) {
+    margin-bottom: 32px;
   }
 }
