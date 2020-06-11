@@ -110,10 +110,18 @@ export const getCartTotal = (state: RootState) => {
   return cartTotal;
 };
 
+const persistedState = localStorage.getItem('rootState')
+  ? JSON.parse(localStorage.getItem('rootState') || '')
+  : {};
 
 const store = createStore(
   rootReducer,
+  persistedState,
   composeWithDevTools(applyMiddleware(thunk)),
 );
+
+store.subscribe(() => {
+  localStorage.setItem('rootState', JSON.stringify(store.getState()));
+});
 
 export default store;
