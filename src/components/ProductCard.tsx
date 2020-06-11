@@ -44,10 +44,12 @@ const ProductCard: React.FC<Props> = ({ product }) => {
         <h2 className="product__title">
           {name}
         </h2>
-        <ProductPrice
-          price={price}
-          discount={discount}
-        />
+        <div className="product__prices">
+          <ProductPrice
+            price={price}
+            discount={discount}
+          />
+        </div>
         <div className="product__divider"></div>
         <div className="product__spec spec">
           <div className="spec__container">

@@ -43,7 +43,7 @@ const ProductDetailsPage: React.FC<Props> = ({ products }) => {
         <section className="section product-details">
           <Breadcrumbs />
           <GoBackButton />
-          <h1 className="product-details__header">{productDetails.name}</h1>
+          <h1 className="page__title">{productDetails.name}</h1>
           <div className="product-details__container">
             <div className="product-details__column">
               <div className="product-details__gallery gallery">
@@ -56,28 +56,26 @@ const ProductDetailsPage: React.FC<Props> = ({ products }) => {
             <div className="product-details__column">
               <div className="product-details__flex-wrap">
                 <div className="product-details__wrap">
-                  <div>
+                  <div className="product-details__prices product__prices">
                     <ProductPrice
                       price={product.price}
                       discount={product.discount}
                     />
                   </div>
-                  <div className="product-details__buttons">
-                    <div className="product__actions">
-                      <AddProductBtn
-                        product={product}
-                      />
-                      <FavoriteBtn
-                        product={product}
-                      />
-                    </div>
+                  <div className="product-details__buttons product__actions">
+                    <AddProductBtn
+                      product={product}
+                    />
+                    <FavoriteBtn
+                      product={product}
+                    />
                   </div>
+                  <ProductShortSpecs {...productDetails} />
                 </div>
                 <span className="product-details__id">
                   {`ID: ${product.id}`}
                 </span>
               </div>
-              <ProductShortSpecs {...productDetails} />
             </div>
             <div className="product-details__column">
               <ProductDescription {...productDetails} />

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './PhonesPage.scss';
 import ProductsList from '../components/ProductsList';
 import Breadcrumbs from '../components/Breadcrumbs';
 

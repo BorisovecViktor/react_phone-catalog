@@ -4,7 +4,7 @@ const ProductTechSpecs = ({
   display,
   hardware,
   storage,
-  android,
+  camera,
   battery,
   sizeAndWeight,
 }: ProductDetails) => {
@@ -12,53 +12,54 @@ const ProductTechSpecs = ({
   return (
     display ? (
       <>
-        <h2 className="product__heading">Tech specs</h2>
-        <div className="product__specs product__specs--text-md">
-          <div className="product__spec">
-            <span className="product__spec-title">Screen</span>
-            <span className="product__spec-info">
+        <h3 className="product-details__title">Tech specs</h3>
+        <div className="product-details__spec spec spec--text-md">
+          <div className="spec__container">
+            <span className="spec__title">Screen</span>
+            <span className="spec__info">
               {display.screenSize}
             </span>
           </div>
-          <div className="product__spec">
-            <span className="product__spec-title">Resolution</span>
-            <span className="product__spec-info">
+          <div className="spec__container">
+            <span className="spec__title">Resolution</span>
+            <span className="spec__info">
               {display.screenResolution}
             </span>
           </div>
-          <div className="product__spec">
-            <span className="product__spec-title">Processor</span>
-            <span className="product__spec-info">
+          <div className="spec__container">
+            <span className="spec__title">Processor</span>
+            <span className="spec__info">
               {hardware.cpu}
             </span>
           </div>
-          <div className="product__spec">
-            <span className="product__spec-title">Storage</span>
-            <span className="product__spec-info">
-              {storage.flash || '32000MB'}
-            </span>
-          </div>
-          <div className="product__spec">
-            <span className="product__spec-title">RAM</span>
-            <span className="product__spec-info">
+          <div className="spec__container">
+            <span className="spec__title">RAM</span>
+            <span className="spec__info">
               {storage.ram || '1000 MB'}
             </span>
           </div>
-          <div className="product__spec">
-            <span className="product__spec-title">OS</span>
-            <span className="product__spec-info">
-              {android.os}
+          <div className="spec__container">
+            <span className="spec__title">Storage</span>
+            <span className="spec__info">
+              {storage.flash || '32000MB'}
             </span>
           </div>
-          <div className="product__spec">
-            <span className="product__spec-title">Battery</span>
-            <span className="product__spec-info">
+
+          <div className="spec__container">
+            <span className="spec__title">Camera</span>
+            <span className="spec__info">
+              {camera.primary}
+            </span>
+          </div>
+          <div className="spec__container">
+            <span className="spec__title">Battery</span>
+            <span className="spec__info">
               {battery.type}
             </span>
           </div>
-          <div className="product__spec">
-            <span className="product__spec-title">Weight</span>
-            <span className="product__spec-info">
+          <div className="spec__container">
+            <span className="spec__title">Weight</span>
+            <span className="spec__info">
               {sizeAndWeight.weight}
             </span>
           </div>

@@ -7,14 +7,14 @@ const ProductDescription = ({
 
   return (
     <>
-      <h2 className="details__title">About</h2>
-      <p className="details__text">
+      <h3 className="product-details__title">About</h3>
+      <p className="product-details__text">
         {description}
       </p>
       {additionalFeatures && (
         <>
-          <h3 className="details__subtitle">Features</h3>
-          <p className="details__text">
+          <h3 className="product-details__subtitle">Features</h3>
+          <p className="product-details__text">
             {additionalFeatures}
           </p>
         </>
