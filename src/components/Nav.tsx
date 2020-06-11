@@ -2,8 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 type Props = {
-  links: NavLinkType[],
-}
+  links: NavLinkType[];
+};
 
 const Nav: React.FC<Props> = ({ links }) => (
   <nav className="nav">
@@ -11,12 +11,14 @@ const Nav: React.FC<Props> = ({ links }) => (
       {links.map(({ title, url }) => (
         <li
           className="nav__item"
-          key={title}>
+          key={title}
+        >
           <NavLink
             className="nav__link"
             exact
             activeClassName="nav__link--active"
-            to={url}>
+            to={url}
+          >
             {title}
           </NavLink>
         </li>

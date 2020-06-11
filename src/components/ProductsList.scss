@@ -13,6 +13,7 @@
     column-gap: 16px;
     row-gap: 40px;
     margin-bottom: 40px;
+    margin-top: 24px;
   }
 
   &__filters {
@@ -21,7 +22,6 @@
 
   &__filter {
     margin-right: 16px;
-    margin-bottom: 24px;
   }
 
   &__filter-title {
@@ -49,5 +49,32 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &__search {
+  }
+
+  &__search-title {
+    font-size: 24px;
+  }
+
+  &__search-subtitle {
+    margin-top: 20px;
+  }
+
+  &__search-query {
+    font-weight: 700;
+  }
+
+  &__message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    height: 20vh;
+    background: url("../img/icons/person-empty-dolly.svg") no-repeat;
+    background-position: center center;
+    background-size: 50px 50px;
+    color: $secondary-color;
   }
 }
