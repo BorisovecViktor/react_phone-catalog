@@ -7,8 +7,8 @@ export const FILTERS = {
 export const SORT_BY = {
   priceAsc: 'price-asc',
   priceDesc: 'price-desc',
-  hotPrice: 'hot-price',
-  newModels: 'new-models',
+  hotPrice: 'hotPrice',
+  newModels: 'newModels',
 };
 
 export const PRODUCT_PATHS: ProductPaths = {

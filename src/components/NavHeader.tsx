@@ -31,8 +31,8 @@ const NavHeader: React.FC<Props> = ({ links }) => {
               activeClassName="nav__header-link--active"
               to={url}
               onClick={() => {
+                window.scrollTo(0, 0);
                 if (window.innerWidth < 1024) {
-                  window.scrollTo(0, 0);
                   dispatch(toggleNavBurger(burger))
                 }
               }}
