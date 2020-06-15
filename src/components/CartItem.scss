@@ -7,6 +7,15 @@
   border: 1px solid $border-section-color;
   padding: 25px;
 
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 0.5fr 1.3fr 2fr 1fr 1fr;
+  }
+
+  @media screen and (max-width: 640px) {
+    grid-template-columns: 0.1fr 0fr 2fr 1fr 1fr;
+    padding: 10px;
+  }
+
   &-remove {
     width: 20px;
     height: 20px;
@@ -18,6 +27,11 @@
     outline: none;
     transition: transform $transition-duration;
 
+    @media screen and (max-width: 640px) {
+      padding: 0;
+      width: 10px;
+    }
+
     &:hover {
       transform: scale(1.1);
     }
@@ -27,7 +41,12 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
+    padding: 0 10px;
     color: $primary-color;
+
+    @media screen and (max-width: 640px) {
+      font-size: 12px;
+    }
   }
 
   &-button-plus,
@@ -37,6 +56,10 @@
     border: 1px solid $input-border-color;
     cursor: pointer;
     outline: none;
+
+    @media screen and (max-width: 640px) {
+      transform: scale(0.75);
+    }
 
     &--disabled {
       opacity: 0.4;
@@ -55,6 +78,7 @@
 
   &-actions {
     display: flex;
+    padding: 0 10px;
   }
 
   &-quantity {
@@ -63,6 +87,10 @@
     line-height: 34px;
     font-weight: 500;
     font-size: 14px;
+
+    @media screen and (max-width: 640px) {
+      width: 15px;
+    }
   }
 
   &-price {
@@ -73,7 +101,7 @@
   }
 
   &-image {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
   }
 }

@@ -3,7 +3,6 @@ import React, {
   useState,
   useCallback,
   useEffect,
-  // useEffect,
 } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -11,7 +10,6 @@ import { useDispatch } from 'react-redux';
 import './Search.scss';
 import { setSearchQuery } from '../store/search';
 import { debounce } from '../helpers/debounce';
-// import * as store from '../store';
 
 type Props = {
   currentLocation: string;
@@ -75,7 +73,6 @@ const Search: React.FC<Props> = ({ currentLocation }) => {
       ) : (
         <span className="search__icon" />
       )}
-
     </div>
   );
 };
