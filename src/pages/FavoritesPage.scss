@@ -22,15 +22,15 @@
     row-gap: 40px;
     margin: 40px 0 120px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 960px) {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @media screen and (max-width: 640px) {
+    @media screen and (max-width: 680px) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media screen and (max-width: 360px) {
+    @media screen and (max-width: 480px) {
       grid-template-columns: 1fr;
     }
   }
