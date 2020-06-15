@@ -14,10 +14,26 @@
     row-gap: 40px;
     margin-bottom: 40px;
     margin-top: 24px;
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (max-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 360px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__filters {
     display: flex;
+
+    @media screen and (max-width: 640px) {
+      flex-direction: column;
+    }
   }
 
   &__filter {
@@ -72,6 +88,7 @@
   }
 
   &__dropdown-list {
+    display: block;
     position: absolute;
     margin-top: 4px;
     opacity: 0;
@@ -82,9 +99,12 @@
     background-color: white;
     font-weight: 500;
     font-size: 14px;
+    z-index: 2;
+    pointer-events: none;
 
     &--active {
       opacity: 1;
+      pointer-events: initial;
     }
   }
 

@@ -16,7 +16,6 @@ import searchReducer from './search';
 import navBurgerReducer from './burger';
 
 
-
 const rootReducer = combineReducers({
   products: productsReducer,
   filterBy: filterReducer,
