@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import Logo from './Logo';
 
-import Nav from './Nav';
+import NavFooter from './NavFooter';
 
 const Footer = () => {
   const footerLinks: NavLinkType[] = [
@@ -24,7 +24,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer__container">
           <Logo />
-          <Nav links={footerLinks} />
+          <NavFooter links={footerLinks} />
           <div className="footer__top-button-container">
             <span className="footer__top-button-text">Back to top</span>
             <div className="footer__top-button-wrap">

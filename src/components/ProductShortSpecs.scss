@@ -16,10 +16,10 @@
   &__title {
     color: $secondary-color;
   }
-}
 
-.spec--text-md {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
+  &--text-md {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
 }

@@ -16,6 +16,12 @@
     outline: none;
     border: 1px solid $border-section-color;
 
+    @media (max-width: 560px) {
+      width: 140px;
+      padding: 24px 4px;
+      font-size: 11px;
+    }
+
     &::placeholder {
       color: $input-border-color;
     }
@@ -33,6 +39,10 @@
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
+
+    @media (max-width: 560px) {
+      right: 5px;
+    }
   }
 
   &__icon {

@@ -13,6 +13,8 @@ import paginationReducer from './pagination';
 import cartReducer from './cart';
 import favouritesReducer from './favourites';
 import searchReducer from './search';
+import navBurgerReducer from './burger';
+
 
 
 const rootReducer = combineReducers({
@@ -24,6 +26,7 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   favourites: favouritesReducer,
   searchQuery: searchReducer,
+  isNavBurgerOpen: navBurgerReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -35,6 +38,7 @@ export const getCart = (state: RootState) => state.cart;
 export const getCartLength = (state: RootState) => state.cart.length;
 export const getFavourites = (state: RootState) => state.favourites;
 export const getSearchQuery = (state: RootState) => state.searchQuery;
+export const getIsNavBurgerOpen = (state: RootState) => state.isNavBurgerOpen;
 
 export const loadProducts = () => {
   return async (dispatch: Dispatch<unknown>) => {

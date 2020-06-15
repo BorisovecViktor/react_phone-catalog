@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Logo from './Logo';
-import Nav from './Nav';
+import NavHeader from './NavHeader';
 import Favorites from './Favorites';
 import Cart from './Cart';
 import Search from './Search';
@@ -33,7 +33,7 @@ const Header = () => {
     <header className="header">
       <div className="header__container">
         <Logo />
-        <Nav links={headerLinks} />
+        <NavHeader links={headerLinks} />
       </div>
       <div className="header__container">
         {searchAvailable.some(path => path === currentLocation) && (

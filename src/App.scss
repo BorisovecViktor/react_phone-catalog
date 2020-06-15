@@ -4,7 +4,9 @@
 @import "./styles/mixins";
 @import "./components/Header";
 @import "./components/Logo";
-@import "./components/Nav";
+@import "./components/NavHeader";
+@import "./components/NavFooter";
+@import "./components/BackDrop";
 @import "./components/Favorites";
 @import "./components/Cart";
 @import "./components/BannerSlider";
@@ -15,11 +17,11 @@
 @import "./components/GoBackButton";
 @import "./components/Breadcrumbs";
 @import "./components/ProductGallery";
-@import "./components/ProductTechSpecs";
 @import "./components/ProductPrice";
 @import "./components/AddProductBtn";
 @import "./components/FavoriteBtn";
 @import "./components/ProductShortSpecs";
+@import "./components/NavBurger";
 
 html {
   @include scrollbar-style;
