@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
 
@@ -19,6 +19,12 @@ const CartItem: React.FC<Props> = ({ product, quantity }) => {
     imageUrl,
   } = product;
   const dispatch = useDispatch();
+  const [inputQuantity, setinputQuantity] = useState(quantity);
+  const inputEl = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setinputQuantity(quantity);
+  }, [quantity]);
 
   return (
     <li className="cart__item">
@@ -41,22 +47,39 @@ const CartItem: React.FC<Props> = ({ product, quantity }) => {
       </div>
       <div className="cart__item-actions">
         <button
-          className="cart__item-button-plus"
-          type="button"
-          onClick={() => dispatch(setCartAmount(id, +1))}
-        >
-          {' '}
-        </button>
-        <div className="cart__item-quantity">
-          {quantity}
-        </div>
-        <button
           className={classNames(
             'cart__item-button-minus',
             { 'cart__item-button-minus--disabled': quantity === 1 },
           )}
           type="button"
-          onClick={() => dispatch(setCartAmount(id, -1))}
+          onClick={() => dispatch(setCartAmount(id, quantity - 1))}
+        >
+          {' '}
+        </button>
+        <div className="cart__item-quantity">
+          <input
+            className="cart__item-quantity-input"
+            type="number"
+            maxLength={2}
+            ref={inputEl}
+            value={inputQuantity}
+            onChange={e => setinputQuantity(+e.target.value)}
+            onKeyUp={e => {
+              if (e.key === 'Enter') {
+                dispatch(setCartAmount(id, +inputQuantity));
+                inputEl.current?.blur();
+              }
+            }}
+            onBlur={() => setinputQuantity(quantity)}
+          />
+        </div>
+        <button
+          className={classNames(
+            'cart__item-button-plus',
+            { 'cart__item-button-plus--disabled': quantity === 10 },
+          )}
+          type="button"
+          onClick={() => dispatch(setCartAmount(id, quantity + 1))}
         >
           {' '}
         </button>

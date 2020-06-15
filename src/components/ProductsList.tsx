@@ -34,12 +34,19 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
   const categoryLength = useSelector(store.getCategoryLength);
   const searchParams = new URLSearchParams(location.search);
   const sortBy = searchParams.get('sortBy') || SORT_BY.newModels;
-  const page = +(searchParams.get('page') || 1);
   const perPage = +(searchParams.get('perPage') || categoryLength);
   const visibleProducts = useSelector(store.getVisibleProducts);
+  const page = +(searchParams.get('page') || 1);
   const searchQuery = useSelector(store.getSearchQuery);
   const [showSortBy, setShowSortBy] = useState(false);
   const [showPerPage, setShowPerPage] = useState(false);
+
+  if (page > categoryLength / perPage) {
+    searchParams.set('page', String(1));
+    history.push({
+      search: searchParams.toString(),
+    });
+  }
 
   useEffect(() => {
     dispatch(setSortBy(sortBy));

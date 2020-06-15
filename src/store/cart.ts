@@ -60,7 +60,11 @@ const reducer = (cart: Cart[] = [], action: PossibleActions) => {
     case SET_CART_AMOUNT:
       return cart.map(product => {
         if (product.id === action.id) {
-          const result = product.quantity + action.amount;
+          let result = action.amount;
+
+          if (result > 10) {
+            result = 10;
+          }
 
           return {
             ...product,
