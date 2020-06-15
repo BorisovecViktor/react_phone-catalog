@@ -6,7 +6,11 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(3, 390px);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
+
+    @media (max-width: 560px) {
+      grid-template-columns: 1fr;
+    }
   }
 }

@@ -22,8 +22,6 @@ import CheckoutPage from './pages/CheckoutPage';
 import FavoritesPage from './pages/FavoritesPage';
 import AccessoriesPage from './pages/AccessoriesPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
-import BackDrop from './components/BackDrop';
-
 
 const App = () => {
   const products = useSelector(store.getProducts);
@@ -35,7 +33,6 @@ const App = () => {
 
   return (
     <div className="app">
-      <BackDrop />
       <Header />
       <main>
         <div className="container">

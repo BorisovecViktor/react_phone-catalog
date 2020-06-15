@@ -6,7 +6,6 @@
 @import "./components/Logo";
 @import "./components/NavHeader";
 @import "./components/NavFooter";
-@import "./components/BackDrop";
 @import "./components/Favorites";
 @import "./components/Cart";
 @import "./components/BannerSlider";
@@ -32,6 +31,7 @@ html {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 .section {

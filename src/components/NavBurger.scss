@@ -1,12 +1,10 @@
 .burger {
-  position: fixed;
+  position: relative;
   display: none;
   flex-direction: column;
   justify-content: space-around;
-  top: 16px;
   width: 30px;
   height: 30px;
-  margin-left: 20px;
   padding: 0;
   box-sizing: border-box;
   background: transparent;

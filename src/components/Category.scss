@@ -17,11 +17,12 @@
   }
 
   &__photo {
-    height: 390px;
+    display: flex;
     overflow: hidden;
   }
 
   &__img {
+    width: 100%;
     transition: transform .3s;
   }
 
