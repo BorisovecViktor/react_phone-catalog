@@ -5,11 +5,10 @@ export const FILTERS = {
 };
 
 export const SORT_BY = {
-  releaseDate: 'release-date',
   priceAsc: 'price-asc',
   priceDesc: 'price-desc',
-  hotPrice: 'hotPrice',
-  newModels: 'newModels',
+  hotPrice: 'hot-price',
+  newModels: 'new-models',
 };
 
 export const PRODUCT_PATHS: ProductPaths = {
