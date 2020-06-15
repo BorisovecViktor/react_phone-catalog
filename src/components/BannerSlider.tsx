@@ -24,11 +24,11 @@ const BannerSlider = () => {
       setActiveBanner(activeBanner - frameSize)
   }
 
-  useEffect(() => {
-    const nextFrame = setInterval(handleNextBanner, 5000);
+  // useEffect(() => {
+  //   const nextFrame = setInterval(handleNextBanner, 5000);
 
-    return () => clearInterval(nextFrame);
-  });
+  //   return () => clearInterval(nextFrame);
+  // });
 
 
   useEffect(() => {
@@ -55,11 +55,14 @@ const BannerSlider = () => {
               className="slider__item"
               key={banner.id}
             >
-              <img
-                className="slider__img"
-                src={banner.url}
-                alt="banner"
-              />
+              <picture>
+                <source srcSet={banner.url768} media="(max-width: 768px)"/>
+                <img
+                  className="slider__img"
+                  src={banner.url}
+                  alt="banner"
+                />
+              </picture>
               <div className="slider__content">
                 <h2 className="slider__title">
                   {banner.title}

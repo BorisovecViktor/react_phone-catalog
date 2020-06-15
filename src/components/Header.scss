@@ -17,5 +17,13 @@
   &__container {
     display: flex;
     align-items: center;
+
+    &:last-child {
+      @media (max-width: 560px) {
+        width: 100%;
+        justify-content: flex-end;
+        padding-left: 15px;
+      }
+    }
   }
 }

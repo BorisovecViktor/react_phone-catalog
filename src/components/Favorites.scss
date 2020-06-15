@@ -1,10 +1,14 @@
 @import "../styles/variables";
 
 .favorites {
-  width: 64px;
+  min-width: 64px;
   height: 64px;
   border-left: 1px solid $border-section-color;
   box-sizing: border-box;
+
+  @media (max-width: 560px) {
+    min-width: 60px;
+  }
 
   &__link {
     position: relative;
