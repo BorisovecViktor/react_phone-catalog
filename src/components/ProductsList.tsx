@@ -20,10 +20,10 @@ type Props = {
 };
 
 const sortByTitles: SortTitles = {
-  'price-asc': 'Price: Low to High',
-  'price-desc': 'Price: High to Low',
-  'hot-price': 'Hot Prices',
-  'new-models': 'Newest Arrivals',
+  priceAsc: 'Price: Low to High',
+  priceDesc: 'Price: High to Low',
+  hotPrice: 'Hot Prices',
+  newModels: 'Newest Arrivals',
 };
 
 
@@ -129,6 +129,7 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
                     { 'products__dropdown-item--active': sortType === sortBy },
                   )}
                   onClick={() => sortByHandler(sortType)}
+                  key={sortType}
                 >
                   {sortByTitles[sortType]}
                 </li>
@@ -170,6 +171,7 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
                     { 'products__dropdown-item--active': perPageOption === perPage },
                   )}
                   onClick={() => handlePerPage(perPageOption)}
+                  key={perPageOption}
                 >
                   {perPageOption}
                 </li>

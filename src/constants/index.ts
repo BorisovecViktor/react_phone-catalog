@@ -5,8 +5,8 @@ export const FILTERS = {
 };
 
 export const SORT_BY = {
-  priceAsc: 'price-asc',
-  priceDesc: 'price-desc',
+  priceAsc: 'priceAsc',
+  priceDesc: 'priceDesc',
   hotPrice: 'hotPrice',
   newModels: 'newModels',
 };
