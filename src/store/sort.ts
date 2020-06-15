@@ -12,7 +12,7 @@ export const setSortBy = (field: string) => ({ type: SET_SORT_BY, field });
 
 type PossibleActions = SetSortByAction;
 
-const reducer = (sortBy = SORT_BY.releaseDate, action: PossibleActions) => {
+const reducer = (sortBy = SORT_BY.newModels, action: PossibleActions) => {
   switch (action.type) {
     case SET_SORT_BY:
       return action.field;
