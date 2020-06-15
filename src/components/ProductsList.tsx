@@ -1,6 +1,10 @@
-import React, { useMemo, useEffect } from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import React, { useMemo, useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import classNames from 'classnames';
 
 import './ProductsList.scss';
 import * as store from '../store';
@@ -15,17 +19,27 @@ type Props = {
   filter: string;
 };
 
+const sortByTitles: SortTitles = {
+  'price-asc': 'Price: Low to High',
+  'price-desc': 'Price: High to Low',
+  'hot-price': 'Hot Prices',
+  'new-models': 'Newest Arrivals',
+};
+
+
 const ProductsList: React.FC<Props> = ({ filter }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
   const categoryLength = useSelector(store.getCategoryLength);
   const searchParams = new URLSearchParams(location.search);
-  const sortBy = searchParams.get('sortBy') || SORT_BY.releaseDate;
+  const sortBy = searchParams.get('sortBy') || SORT_BY.newModels;
   const page = +(searchParams.get('page') || 1);
   const perPage = +(searchParams.get('perPage') || categoryLength);
   const visibleProducts = useSelector(store.getVisibleProducts);
   const searchQuery = useSelector(store.getSearchQuery);
+  const [showSortBy, setShowSortBy] = useState(false);
+  const [showPerPage, setShowPerPage] = useState(false);
 
   useEffect(() => {
     dispatch(setSortBy(sortBy));
@@ -54,6 +68,29 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
     return options.length === 0 ? [4] : options;
   }, [categoryLength]);
 
+  const sortByHandler = (sortType: string) => {
+    if (showSortBy) {
+      dispatch(setSortBy(sortType));
+      setShowSortBy(false);
+      searchParams.set('sortBy', sortType);
+      searchParams.set('page', String(1));
+      history.push({
+        search: searchParams.toString(),
+      });
+    }
+  };
+
+  const handlePerPage = (perPageOption: number) => {
+    if (showPerPage) {
+      dispatch(setPerPage(perPageOption));
+      setShowPerPage(false);
+      searchParams.set('perPage', String(perPageOption));
+      searchParams.set('page', String(1));
+      history.push({
+        search: searchParams.toString(),
+      });
+    }
+  };
 
   return (
     <div className="products">
@@ -70,56 +107,74 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
             <div className="products__filter-title">
               Sort by
             </div>
-            <select
-              value={sortBy}
-              className="products__filter-select"
-              onChange={
-                ({ target }) => {
-                  searchParams.set('sortBy', target.value);
-                  searchParams.set('page', String(1));
-                  history.push({
-                    search: searchParams.toString(),
-                  });
-                }
-              }
+            <div
+              className={classNames(
+                'products__dropdown',
+                { 'products__dropdown--active': showSortBy },
+              )}
+              onClick={() => setShowSortBy(!showSortBy)}
             >
-              <option value={SORT_BY.releaseDate}>
-                Newest Arrivals
-              </option>
-              <option value={SORT_BY.priceAsc}>
-                Price: Low to High
-              </option>
-              <option value={SORT_BY.priceDesc}>
-                Price: High to Low
-              </option>
-            </select>
+              {sortByTitles[sortBy]}
+            </div>
+            <ul
+              className={classNames(
+                'products__dropdown-list',
+                { 'products__dropdown-list--active': showSortBy },
+              )}
+            >
+              {Object.values(SORT_BY).map(sortType => (
+                <li
+                  className={classNames(
+                    'products__dropdown-item',
+                    { 'products__dropdown-item--active': sortType === sortBy },
+                  )}
+                  onClick={() => sortByHandler(sortType)}
+                >
+                  {sortByTitles[sortType]}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="products__filter">
             <div className="products__filter-title">
               Items on page
             </div>
-            <select
-              value={perPage}
-              onChange={({ target }) => {
-                searchParams.set('perPage', target.value);
-                searchParams.set('page', String(1));
-                history.push({
-                  search: searchParams.toString(),
-                });
-              }}
-              className="products__filter-select"
+            <div
+              className={classNames(
+                'products__dropdown',
+                { 'products__dropdown--active': showPerPage },
+              )}
+              onClick={() => setShowPerPage(!showPerPage)}
             >
-              <option
-                value={categoryLength}
+              {categoryLength === visibleProducts.length ? 'All' : perPage}
+            </div>
+            <ul
+              className={classNames(
+                'products__dropdown-list',
+                { 'products__dropdown-list--active': showPerPage },
+              )}
+            >
+              <li
+                className={classNames(
+                  'products__dropdown-item',
+                  { 'products__dropdown-item--active': categoryLength === visibleProducts.length },
+                )}
+                onClick={() => handlePerPage(categoryLength)}
               >
                 All
-              </option>
-              {perPageOptions.map(show => (
-                <option key={show}>
-                  {show}
-                </option>
+              </li>
+              {perPageOptions.map(perPageOption => (
+                <li
+                  className={classNames(
+                    'products__dropdown-item',
+                    { 'products__dropdown-item--active': perPageOption === perPage },
+                  )}
+                  onClick={() => handlePerPage(perPageOption)}
+                >
+                  {perPageOption}
+                </li>
               ))}
-            </select>
+            </ul>
           </div>
         </div>
       )}

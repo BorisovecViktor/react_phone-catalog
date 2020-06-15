@@ -84,10 +84,6 @@ export const getVisibleProducts = (state: RootState) => {
       visibleProducts.sort((a, b) => b.price - a.price);
       break;
 
-    case SORT_BY.releaseDate:
-      visibleProducts.sort((a, b) => a.age - b.age);
-      break;
-
     case SORT_BY.hotPrice:
       visibleProducts
         .sort((a: Product, b: Product): number => (

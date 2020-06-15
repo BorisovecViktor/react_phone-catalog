@@ -32,26 +32,77 @@
     color: $secondary-color;
   }
 
-  &__filter-select {
-    width: 170px;
+  &__dropdown {
+    position: relative;
+    width: 180px;
     padding: 10px;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
     margin-top: 4px;
+    box-sizing: border-box;
     border: 1px solid $input-border-color;
     outline: none;
-    appearance: none;
-    background-image: url("../img/icons/arrow-down.svg");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
+    cursor: pointer;
+
+    &::before {
+      content: " ";
+      position: absolute;
+      background: url("../img/icons/arrow-down.svg") no-repeat;
+      background-position: center center;
+      top: 0;
+      right: 5px;
+      width: 16px;
+      height: 40px;
+      transform: rotate(0);
+      transition: transform $transition-duration;
+    }
+
+    &--active {
+      border-color: $primary-color;
+
+      &::before {
+        transform: rotate(180deg);
+      }
+    }
 
     &:hover {
-      cursor: pointer;
+      border-color: $primary-color;
     }
   }
 
-  &__search {
+  &__dropdown-list {
+    position: absolute;
+    margin-top: 4px;
+    opacity: 0;
+    box-sizing: border-box;
+    transition: opacity $transition-duration;
+    border: 1px solid $input-border-color;
+    width: 180px;
+    background-color: white;
+    font-weight: 500;
+    font-size: 14px;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__dropdown-item {
+    padding: 10px;
+    height: 32px;
+    cursor: pointer;
+    line-height: 32px;
+    transition: background-color $transition-duration;
+
+    &:hover {
+      background-color: $input-search-active;
+    }
+
+    &--active {
+      font-weight: 700;
+      background-color: $input-search-active;
+    }
   }
 
   &__search-title {

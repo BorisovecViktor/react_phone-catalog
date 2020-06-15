@@ -33,7 +33,7 @@ interface Cart {
 interface ProductGalleryProps {
   images: string[];
   title: string;
-};
+}
 
 interface ProductDetails {
   additionalFeatures: string;
@@ -89,8 +89,12 @@ interface ProductPaths {
   [key: string]: string;
 }
 
+interface SortTitles {
+  [key: string]: string;
+}
+
 interface ProductPriceProps {
   price: number;
   discount: number;
   styleSize?: string;
-};
+}
