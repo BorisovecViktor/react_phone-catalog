@@ -1,9 +1,23 @@
 .сarousel {
-  overflow: hidden;
-  margin: 0 -15px;
+  margin: -15px;
 
   &__container {
-    padding: 0 15px;
+    padding: 15px;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    @media (max-width: 1230px) {
+      max-width: 926px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 926px) {
+      max-width: 622px;
+    }
+
+    @media (max-width: 622px) {
+      max-width: 318px;
+    }
   }
 
   &__header-container {

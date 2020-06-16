@@ -1,12 +1,5 @@
 const API_URL = 'https://fe-feb20-5.github.io/react_phone-catalog/api';
 
-
-export const getProducts = async () => {
-  const res = await fetch(`${API_URL}/products.json`);
-
-  return res.json();
-}
-
 export const fetchProducts = async (): Promise<Product[]> => {
   const response = await fetch(`${API_URL}/products.json`);
 
