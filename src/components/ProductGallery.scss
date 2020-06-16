@@ -2,6 +2,10 @@
   display: flex;
   justify-content: space-between;
 
+  @media (max-width: 1024px) {
+    justify-content: flex-start;
+  }
+
   &__thumbnails {
     display: flex;
     flex-direction: column;
@@ -32,6 +36,15 @@
   &__photo {
     width: 400px;
     height: 400px;
+
+    @media (max-width: 1024px) {
+      width: 300px;
+      height: 300px;
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 
   &__img {
