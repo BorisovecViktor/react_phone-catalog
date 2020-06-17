@@ -3,8 +3,10 @@ import {
   Switch,
   Route,
   Redirect,
+  useLocation,
 } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import * as store from './store';
 import { FILTERS } from './constants';
@@ -23,9 +25,11 @@ import FavoritesPage from './pages/FavoritesPage';
 import AccessoriesPage from './pages/AccessoriesPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 
+
 const App = () => {
   const products = useSelector(store.getProducts);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(store.loadProducts());
@@ -36,36 +40,50 @@ const App = () => {
       <Header />
       <main>
         <div className="container">
-          <Switch>
-            <Redirect from="/home" to="/" />
-            <Route path="/" exact>
-              <HomePage
-                products={products}
-              />
-            </Route>
-            <Route path="/:productType/:productId">
-              <ProductDetailsPage />
-            </Route>
-            <Route path="/phones" exact>
-              <PhonesPage
-                filter={FILTERS.phones}
-              />
-            </Route>
-            <Route path="/tablets" exact>
-              <TabletsPage
-                filter={FILTERS.tablets}
-              />
-            </Route>
-            <Route path="/accessories" exact>
-              <AccessoriesPage
-                filter={FILTERS.accessories}
-              />
-            </Route>
-            <Route path="/cart" component={CartPage} />
-            <Route path="/favorites" component={FavoritesPage} />
-            <Route path="/checkout" component={CheckoutPage} />
-            <Route component={NotFoundPage} />
-          </Switch>
+          <TransitionGroup className="transition-group">
+            <CSSTransition
+              key={location.pathname}
+              timeout={{ enter: 300, exit: 300 }}
+              classNames="fade"
+            >
+              <section className="route-section">
+                <Switch
+                  location={location}
+                >
+                  <Redirect from="/home" to="/" />
+                  <Route path="/" exact>
+                    <HomePage
+                      products={products}
+                    />
+                  </Route>
+                  <Route path="/:productType/:productId">
+                    <ProductDetailsPage
+                      products={products}
+                    />
+                  </Route>
+                  <Route path="/phones" exact>
+                    <PhonesPage
+                      filter={FILTERS.phones}
+                    />
+                  </Route>
+                  <Route path="/tablets" exact>
+                    <TabletsPage
+                      filter={FILTERS.tablets}
+                    />
+                  </Route>
+                  <Route path="/accessories" exact>
+                    <AccessoriesPage
+                      filter={FILTERS.accessories}
+                    />
+                  </Route>
+                  <Route path="/cart" component={CartPage} />
+                  <Route path="/favorites" component={FavoritesPage} />
+                  <Route path="/checkout" component={CheckoutPage} />
+                  <Route component={NotFoundPage} />
+                </Switch>
+              </section>
+            </CSSTransition>
+          </TransitionGroup>
         </div>
       </main>
       <Footer />

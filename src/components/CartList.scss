@@ -3,3 +3,22 @@
   grid-template-columns: 1fr;
   row-gap: 16px;
 }
+
+.cart-item-enter {
+  opacity: 0;
+}
+
+.cart-item-enter-active {
+  opacity: 1;
+  transition: opacity 100ms ease-in;
+}
+
+.cart-item-exit {
+  opacity: 1;
+}
+
+.cart-item-exit-active {
+  opacity: 0;
+  transition: opacity 100ms ease-in, transform 200ms;
+  transform: translateX(-100px);
+}

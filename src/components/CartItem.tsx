@@ -19,11 +19,11 @@ const CartItem: React.FC<Props> = ({ product, quantity }) => {
     imageUrl,
   } = product;
   const dispatch = useDispatch();
-  const [inputQuantity, setinputQuantity] = useState(quantity);
+  const [inputQuantity, setInputQuantity] = useState(String(quantity));
   const inputEl = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setinputQuantity(quantity);
+    setInputQuantity(String(quantity));
   }, [quantity]);
 
   return (
@@ -59,18 +59,35 @@ const CartItem: React.FC<Props> = ({ product, quantity }) => {
         <div className="cart__item-quantity">
           <input
             className="cart__item-quantity-input"
-            type="number"
+            type="text"
             maxLength={2}
             ref={inputEl}
             value={inputQuantity}
-            onChange={e => setinputQuantity(+e.target.value)}
+            onChange={e => {
+              if (!Number(e.target.value)) {
+                setInputQuantity(String(1));
+
+                return;
+              }
+
+              setInputQuantity(e.target.value);
+            }}
             onKeyUp={e => {
               if (e.key === 'Enter') {
-                dispatch(setCartAmount(id, +inputQuantity));
+                dispatch(setCartAmount(id, +inputQuantity ? +inputQuantity : 1));
                 inputEl.current?.blur();
               }
             }}
-            onBlur={() => setinputQuantity(quantity)}
+            onClick={() => setInputQuantity('')}
+            onBlur={(e) => {
+              if (e.target.value === '') {
+                setInputQuantity(String(quantity));
+
+                return;
+              }
+
+              dispatch(setCartAmount(id, +e.target.value));
+            }}
           />
         </div>
         <button

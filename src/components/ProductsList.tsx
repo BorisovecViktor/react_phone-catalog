@@ -41,13 +41,6 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
   const [showSortBy, setShowSortBy] = useState(false);
   const [showPerPage, setShowPerPage] = useState(false);
 
-  if (page > categoryLength / perPage) {
-    searchParams.set('page', String(1));
-    history.push({
-      search: searchParams.toString(),
-    });
-  }
-
   useEffect(() => {
     dispatch(setSortBy(sortBy));
   }, [dispatch, sortBy]);
@@ -74,6 +67,24 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
 
     return options.length === 0 ? [4] : options;
   }, [categoryLength]);
+
+  if (page > categoryLength / perPage) {
+    searchParams.set('page', String(1));
+    history.push({
+      search: searchParams.toString(),
+    });
+  }
+
+  if (
+    perPage > categoryLength
+    || !(perPageOptions.includes(+perPage) || perPage === categoryLength)
+  ) {
+    searchParams.set('perPage', String(categoryLength));
+    searchParams.set('page', String(1));
+    history.push({
+      search: searchParams.toString(),
+    });
+  }
 
   const sortByHandler = (sortType: string) => {
     if (showSortBy) {
