@@ -30,7 +30,7 @@ const ProductShortSpecs = ({
       <div className="spec__container">
         <span className="spec__title">RAM</span>
         <span className="spec__info">
-          {storage.ram || '1000 MB'}
+          {storage.ram || '128 MB'}
         </span>
       </div>
     </div>

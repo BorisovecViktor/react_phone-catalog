@@ -41,7 +41,7 @@ const AddProductBtn: React.FC<Props> = ({ product }) => {
 
       onMouseEnter={() => {
         if (isAddedToCart) {
-          setCartButtonText('Remove from cart');
+          setCartButtonText('Remove');
         }
       }}
 

@@ -59,7 +59,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             Screen
           </div>
           <div className="spec__info">
-            {screen || '-'}
+            {screen || '4.0 inches'}
           </div>
         </div>
         <div className="spec__container">
@@ -67,7 +67,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             Capacity
           </div>
           <div className="spec__info">
-            {capacity || '-'}
+            {capacity || '1000 MB'}
           </div>
         </div>
         <div className="spec__container">
@@ -75,7 +75,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             RAM
           </div>
           <div className="spec__info">
-            {ram || '-'}
+            {ram || '128 MB'}
           </div>
         </div>
       </div>
