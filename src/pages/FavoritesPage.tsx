@@ -1,5 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 
 import './FavoritesPage.scss';
 import * as store from '../store';
@@ -21,14 +25,20 @@ const FavoritesPage = () => {
         </div>
       )}
       {favourites.length > 0 ? (
-        <div className="favourites__list">
+        <TransitionGroup className="favourites__list">
           {favourites.map(favouriteProduct => (
-            <ProductCard
+            <CSSTransition
               key={favouriteProduct.id}
-              product={favouriteProduct}
-            />
+              timeout={300}
+              classNames="fav-item"
+            >
+              <ProductCard
+                key={favouriteProduct.id}
+                product={favouriteProduct}
+              />
+            </CSSTransition>
           ))}
-        </div>
+        </TransitionGroup>
       ) : (
         <div className="favourites__message">
           No favorites yet
