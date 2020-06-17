@@ -24,11 +24,11 @@ const BannerSlider = () => {
       setActiveBanner(activeBanner - frameSize)
   }
 
-  // useEffect(() => {
-  //   const nextFrame = setInterval(handleNextBanner, 5000);
+  useEffect(() => {
+    const nextFrame = setInterval(handleNextBanner, 5000);
 
-  //   return () => clearInterval(nextFrame);
-  // });
+    return () => clearInterval(nextFrame);
+  });
 
 
   useEffect(() => {
