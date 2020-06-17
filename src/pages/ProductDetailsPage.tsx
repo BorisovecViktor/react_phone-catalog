@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getDetails } from '../helpers/api';
 import './ProductDetailsPage.scss';
+
+import * as store from '../store';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Breadcrumbs from '../components/Breadcrumbs';
 import GoBackButton from '../components/GoBackButton';
@@ -13,15 +15,16 @@ import ProductsСarousel from '../components/ProductsСarousel';
 import AddProductBtn from '../components/AddProductBtn';
 import FavoriteBtn from '../components/FavoriteBtn';
 import ProductShortSpecs from '../components/ProductShortSpecs';
+import Spinner from '../components/Spinner';
 
-type Props = {
-  products: Product[];
-}
-
-const ProductDetailsPage: React.FC<Props> = ({ products }) => {
+const ProductDetailsPage = () => {
+  const dispatch = useDispatch();
   const { productId } = useParams();
+  const products = useSelector(store.getProducts)
+  const productsDetails = useSelector(store.getproductsDetails)
+  const loading = useSelector(store.getIsLoading);
+
   const [product, setProduct] = useState<Product>();
-  const [productDetails, setProductDetails] = useState<ProductDetails>({} as ProductDetails);
 
   useEffect(() => {
     if (products.length) {
@@ -31,65 +34,68 @@ const ProductDetailsPage: React.FC<Props> = ({ products }) => {
   }, [products, productId]);
 
   useEffect(() => {
-    getDetails(productId)
-      .then(details => {
-        setProductDetails(details)
-      })
-  }, [productId])
+    dispatch(store.loadProductsDetails(productId));
+  }, [dispatch, productId]);
 
   return (
-    product ? (
-      <>
-        <section className="section product-details">
-          <Breadcrumbs />
-          <GoBackButton />
-          <h1 className="page__title">{productDetails.name}</h1>
-          <div className="product-details__container">
-            <div className="product-details__column">
-              <div className="product-details__gallery gallery">
-                <ProductGallery
-                  images={productDetails.images}
-                  title={productDetails.name}
-                />
-              </div>
-            </div>
-            <div className="product-details__column">
-              <div className="product-details__flex-wrap">
-                <div className="product-details__wrap">
-                  <div className="product-details__prices product__prices">
-                    <ProductPrice
-                      price={product.price}
-                      discount={product.discount}
-                    />
-                  </div>
-                  <div className="product-details__buttons product__actions">
-                    <AddProductBtn
-                      product={product}
-                    />
-                    <FavoriteBtn
-                      product={product}
-                    />
-                  </div>
-                  <ProductShortSpecs {...productDetails} />
+    <>
+      {loading
+        ?
+        <Spinner />
+        :
+        product &&
+        <>
+          <section className="section product-details">
+            <Breadcrumbs />
+            <GoBackButton />
+            <h1 className="page__title">{productsDetails.name}</h1>
+            <div className="product-details__container">
+              <div className="product-details__column">
+                <div className="product-details__gallery gallery">
+                  <ProductGallery
+                    images={productsDetails.images}
+                    title={productsDetails.name}
+                  />
                 </div>
-                <span className="product-details__id">
-                  {`ID: ${product.id}`}
-                </span>
+              </div>
+              <div className="product-details__column">
+                <div className="product-details__flex-wrap">
+                  <div className="product-details__wrap">
+                    <div className="product-details__prices product__prices">
+                      <ProductPrice
+                        price={product.price}
+                        discount={product.discount}
+                      />
+                    </div>
+                    <div className="product-details__buttons product__actions">
+                      <AddProductBtn
+                        product={product}
+                      />
+                      <FavoriteBtn
+                        product={product}
+                      />
+                    </div>
+                    <ProductShortSpecs {...productsDetails} />
+                  </div>
+                  <span className="product-details__id">
+                    {`ID: ${product.id}`}
+                  </span>
+                </div>
+              </div>
+              <div className="product-details__column">
+                <ProductDescription {...productsDetails} />
+              </div>
+              <div className="product-details__column">
+                <ProductTechSpecs {...productsDetails} />
               </div>
             </div>
-            <div className="product-details__column">
-              <ProductDescription {...productDetails} />
-            </div>
-            <div className="product-details__column">
-              <ProductTechSpecs {...productDetails} />
-            </div>
-          </div>
-        </section>
-        <section className="section сarousel">
-          <ProductsСarousel products={products} title={'You may also like'} />
-        </section>
-      </>
-    ) : null
+          </section>
+          <section className="section сarousel">
+            <ProductsСarousel products={products} title={'You may also like'} />
+          </section>
+        </>
+      }
+    </>
   );
 }
 

@@ -2,10 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Category: React.FC<Category> = ({ title, link, count }) => {
+  const handleClickToDetails = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <Link
       to={`/${link}`}
       className="categories__link"
+      onClick={handleClickToDetails}
     >
       <div className="categories__photo">
         <img

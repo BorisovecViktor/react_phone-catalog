@@ -13,9 +13,14 @@
 
   &__top-button-container {
     display: flex;
+    visibility: hidden;
     justify-content: space-between;
     align-items: center;
     width: 118px;
+
+    &--active {
+      visibility: visible;
+    }
   }
 
   &__top-button-text {
