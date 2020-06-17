@@ -24,8 +24,17 @@ const Search: React.FC<Props> = ({ currentLocation }) => {
   const [query, setQuery] = useState(searchParams.get('search') || '');
 
   const handleSearchInput = useCallback(debounce((value: string) => {
+    if (value) {
+      searchParams.set('query', value);
+    } else {
+      searchParams.delete('query');
+    }
+
     dispatch(setSearchQuery(value));
-  }, 200), []);
+    history.push({
+      search: searchParams.toString(),
+    });
+  }, 300), []);
 
   useEffect(() => {
     handleSearchInput(query);
@@ -46,10 +55,6 @@ const Search: React.FC<Props> = ({ currentLocation }) => {
         onChange={e => {
           handleSearchInput(e.currentTarget.value);
           setQuery(e.currentTarget.value);
-          searchParams.set('query', e.currentTarget.value);
-          history.push({
-            search: searchParams.toString(),
-          });
         }}
         placeholder={`Search in ${currentLocation}...`}
       />
@@ -71,8 +76,8 @@ const Search: React.FC<Props> = ({ currentLocation }) => {
           {' '}
         </button>
       ) : (
-        <span className="search__icon" />
-      )}
+          <span className="search__icon" />
+        )}
     </div>
   );
 };
