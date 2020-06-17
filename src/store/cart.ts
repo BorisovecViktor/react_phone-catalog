@@ -62,8 +62,8 @@ const reducer = (cart: Cart[] = [], action: PossibleActions) => {
         if (product.id === action.id) {
           let result = action.amount;
 
-          if (result > 10) {
-            result = 10;
+          if (result > 99) {
+            result = 99;
           }
 
           return {
