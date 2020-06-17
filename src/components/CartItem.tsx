@@ -65,7 +65,7 @@ const CartItem: React.FC<Props> = ({ product, quantity }) => {
             value={inputQuantity}
             onChange={e => {
               if (!Number(e.target.value)) {
-                setInputQuantity(String(1));
+                setInputQuantity('');
 
                 return;
               }
