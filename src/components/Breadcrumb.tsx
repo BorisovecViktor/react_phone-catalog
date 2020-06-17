@@ -20,7 +20,8 @@ const Breadcrumb: React.FC<Props> = ({ label, link, isLast }) => (
         >
           {label}
         </NavLink>
-      )}
+      )
+    }
   </li>
 );
 
