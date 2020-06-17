@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
+import cn from 'classnames';
 import Logo from './Logo';
 
 import NavFooter from './NavFooter';
@@ -9,6 +10,7 @@ const Footer = () => {
     { title: 'contacts', url: '/contacts' },
     { title: 'rights', url: '/rights' },
   ]
+  const [isScroll, setIsScroll] = useState(false);
 
   const backToTop = useCallback(
     () => {
@@ -19,13 +21,23 @@ const Footer = () => {
     }, []
   );
 
+  window.onscroll = function () {
+    window.pageYOffset > 0
+      ?
+      setIsScroll(true)
+      :
+      setIsScroll(false)
+  };
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer__container">
           <Logo />
           <NavFooter links={footerLinks} />
-          <div className="footer__top-button-container">
+          <div className={cn('footer__top-button-container', {
+            'footer__top-button-container--active': isScroll,
+          })}>
             <span className="footer__top-button-text">Back to top</span>
             <div className="footer__top-button-wrap">
               <span></span>
