@@ -1,0 +1,22 @@
+.product {
+  &__button-favorite {
+    height: 40px;
+    flex-basis: 40px;
+    background-color: white;
+    background-image: url(../img/icons/heart-empty.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: none;
+    transition: border-color $transition-duration;
+    border: 1px solid $input-border-color;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &--active {
+      background-image: url(../img/icons/heart-full.svg);
+    }
+  }
+}

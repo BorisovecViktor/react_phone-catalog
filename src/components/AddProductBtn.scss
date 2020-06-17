@@ -1,0 +1,35 @@
+.product {
+  &__button-buy {
+    flex-grow: 2;
+    height: 40px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    border: transparent;
+    margin-right: 8px;
+    background-color: $primary-color;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0;
+    transition: box-shadow $transition-duration;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &--active {
+      color: $success-color;
+      background-color: white;
+      border: 1px solid $input-border-color;
+    }
+
+    &--remove {
+      &:hover {
+        color: $accent-color;
+        border-color: $accent-color;
+      }
+    }
+  }
+}

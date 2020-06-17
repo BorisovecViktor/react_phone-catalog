@@ -1,0 +1,101 @@
+@import "../styles/variables";
+
+.cart-page {
+  &__container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    column-gap: 16px;
+    margin: 40px 0;
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+      row-gap: 20px;
+    }
+  }
+
+  &__message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    height: 45vh;
+    background: url("../img/icons/cart-empty.svg") no-repeat;
+    background-position: center center;
+    background-size: 50px 50px;
+    color: $secondary-color;
+  }
+
+  &__title {
+    margin-top: 40px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+  }
+
+  &__link {
+    position: relative;
+    border: transparent;
+    padding-left: 15px;
+    background: url("../img/icons/slider-arrow-left.svg") no-repeat;
+    background-position: center left;
+    cursor: pointer;
+    color: $secondary-color;
+    transition: color $transition-duration;
+    outline: none;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+  }
+
+  &__total-container {
+    padding: 23px;
+    border: 1px solid $border-section-color;
+    text-align: center;
+  }
+
+  &__total-price {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__total-text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+  }
+
+  &__total-devider {
+    margin-top: 24px;
+    display: block;
+    height: 1px;
+    background-color: $border-section-color;
+  }
+
+  &__total-checkout {
+    margin-top: 24px;
+    width: 100%;
+    height: 48px;
+    background-color: $primary-color;
+    color: white;
+    border: transparent;
+    cursor: pointer;
+    box-shadow: 0;
+    transition: box-shadow $transition-duration;
+    outline: none;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+}

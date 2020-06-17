@@ -1,0 +1,115 @@
+@import "../styles/variables";
+
+.cart__item {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 0.5fr 1.3fr 3fr 1fr 1fr;
+  border: 1px solid $border-section-color;
+  padding: 25px;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 0.5fr 1.3fr 2fr 1fr 1fr;
+  }
+
+  @media screen and (max-width: 640px) {
+    grid-template-columns: 0.1fr 0fr 2fr 1.3fr 1fr;
+    padding: 10px;
+  }
+
+  &-remove {
+    width: 20px;
+    height: 20px;
+    padding: 20px;
+    border: transparent;
+    background: url("../img/icons/close.svg") no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    outline: none;
+    transition: transform $transition-duration;
+
+    @media screen and (max-width: 640px) {
+      padding: 0;
+      width: 10px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &-title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 0 10px;
+    color: $primary-color;
+
+    @media screen and (max-width: 640px) {
+      font-size: 12px;
+    }
+  }
+
+  &-button-plus,
+  &-button-minus {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $input-border-color;
+    cursor: pointer;
+    outline: none;
+
+    @media screen and (max-width: 640px) {
+      transform: scale(0.75);
+    }
+
+    &--disabled {
+      opacity: 0.4;
+    }
+  }
+
+  &-button-plus {
+    background: url("../img/icons/plus.svg") no-repeat;
+    background-position: 7px center;
+  }
+
+  &-button-minus {
+    background: url("../img/icons/minus.svg") no-repeat;
+    background-position: 7px center;
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+
+    @media screen and (max-width: 640px) {
+      padding: 0 5px;
+    }
+  }
+
+  &-quantity-input {
+    text-align: center;
+    width: 32px;
+    line-height: 29px;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 0 5px;
+    border-color: transparent;
+    outline: none;
+
+    @media screen and (max-width: 640px) {
+      width: 14px;
+    }
+  }
+
+  &-price {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  &-image {
+    width: 60%;
+    height: 60%;
+  }
+}

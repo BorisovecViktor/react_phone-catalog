@@ -1,0 +1,76 @@
+.сarousel {
+  margin: -15px;
+
+  &__container {
+    padding: 15px;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    @media (max-width: 1230px) {
+      max-width: 926px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 926px) {
+      max-width: 622px;
+    }
+
+    @media (max-width: 622px) {
+      max-width: 318px;
+    }
+  }
+
+  &__header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 0 15px;
+
+  }
+
+  &__header {
+    @include h2;
+  }
+
+  &__controls {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $border-btn-color;
+    box-sizing: border-box;
+    background-color: #fff;
+    background-image: url(../img/icons/сarousel-arrow.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    outline: none;
+    cursor: pointer;
+    @include hover(border-color, $primary-color, 0.3);
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+
+      &:hover {
+        border-color: $border-btn-color;
+      }
+    }
+
+    &--left {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 288px;
+    grid-gap: 16px;
+    transition: 1s;
+  }
+}

@@ -1,0 +1,139 @@
+.slider {
+  @media (max-width: 560px) {
+    display: none;
+  }
+
+  &__wrap {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    width: 92%;
+    margin: 0 auto;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      width: 87%;
+      height: 370px;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3%;
+    box-sizing: border-box;
+    border: 1px solid $secondary-color;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    outline: 0;
+    cursor: pointer;
+    @include hover(border-color, $primary-color, 0.3);
+
+    @media (max-width: 768px) {
+      width: 5%;
+    }
+
+    &--left {
+      background-image: url("../img/icons/slider-arrow-left.svg");
+      left: 0;
+    }
+
+    &--right {
+      background-image: url("../img/icons/slider-arrow-right.svg");
+      right: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    transition-duration: 0.5s;
+  }
+
+  &__item {
+    position: relative;
+    width: 1104px;
+    height: 457px;
+  }
+
+  &__content {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    width: 30%;
+    color: #fff;
+
+    @media (max-width: 1024px) {
+      left: 47%;
+      width: 20%;
+    }
+
+    @media (max-width: 960px) {
+      display: none;
+    }
+  }
+
+  &__title {
+    font-size: 50px;
+    line-height: 60px;
+    margin-bottom: 17px;
+    letter-spacing: 0.08px;
+
+    @media (max-width: 1024px) {
+      font-size: 30px;
+      line-height: 35px;
+      margin-bottom: 12px;
+      letter-spacing: 0.08px;
+    }
+  }
+
+  &__description {
+    font-size: 20px;
+    line-height: 30px;
+
+    @media (max-width: 1024px) {
+      font-size: 15px;
+      line-height: 25px;
+    }
+  }
+
+  &__img {
+    width: 1104px;
+    height: 457px;
+    object-fit: cover;
+
+    @media (max-width: 768px) {
+      height: 370px;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__dot {
+    display: block;
+    width: 14px;
+    height: 6px;
+    border: 0;
+    outline: 0;
+    background-color: $secondary-color;
+    transition: background-color 0.5s;
+    cursor: pointer;
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
+
+  &__dot:not(:last-child) {
+    margin-right: 14px;
+  }
+}

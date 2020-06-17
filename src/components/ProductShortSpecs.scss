@@ -1,0 +1,25 @@
+.spec {
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__container:not(:last-child) {
+    margin-bottom: 6px;
+  }
+
+  &__title {
+    color: $secondary-color;
+  }
+
+  &--text-md {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

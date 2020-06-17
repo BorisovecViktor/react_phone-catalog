@@ -1,0 +1,67 @@
+@import "../styles/variables";
+
+.favourites {
+  &__title {
+    margin-top: 40px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+  }
+
+  &__subtitle {
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+    row-gap: 40px;
+    margin: 40px 0 120px;
+
+    @media screen and (max-width: 960px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (max-width: 680px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    height: 45vh;
+    background: url("../img/icons/heart-break.svg") no-repeat;
+    background-position: center center;
+    background-size: 50px 50px;
+    color: $secondary-color;
+  }
+}
+
+.fav-item-enter {
+  opacity: 0;
+}
+
+.fav-item-enter-active {
+  opacity: 1;
+  transition: opacity 100ms ease-in;
+}
+
+.fav-item-exit {
+  opacity: 1;
+}
+
+.fav-item-exit-active {
+  opacity: 0;
+  transition: opacity 100ms ease-in;
+}

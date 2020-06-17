@@ -1,0 +1,58 @@
+.breadcrumbs {
+  display: flex;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-right: 13px;
+    text-transform: capitalize;
+  }
+
+  &__link {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    color: $primary-color;
+    cursor: pointer;
+    user-select: none;
+    @include hover(color, $primary-color, 0.3);
+
+    &--active {
+      color: $secondary-color;
+    }
+  }
+
+  &__home {
+    display: inline-block;
+    width: 14px;
+    height: 15px;
+    background-image: url("../img/icons/breadcrumb-home.svg");
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+  }
+
+  &__last {
+    display: flex;
+    align-self: center;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    color: $secondary-color;
+    user-select: none;
+  }
+
+  &__arrow {
+    display: inline-block;
+    margin-right: 13px;
+    width: 5px;
+    height: 9px;
+    flex-shrink: 0;
+    background-image: url("../img/icons/breadcrumb-arrow.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s ease-out;
+  }
+}
