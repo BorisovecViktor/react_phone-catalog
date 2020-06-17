@@ -21,6 +21,7 @@
 @import "./components/FavoriteBtn";
 @import "./components/ProductShortSpecs";
 @import "./components/NavBurger";
+@import "./components/Spinner";
 
 html {
   @include scrollbar-style;
