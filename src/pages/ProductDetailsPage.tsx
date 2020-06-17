@@ -35,7 +35,7 @@ const ProductDetailsPage = () => {
 
   useEffect(() => {
     dispatch(store.loadProductsDetails(productId));
-  }, [dispatch]);
+  }, [dispatch, productId]);
 
   return (
     <>
