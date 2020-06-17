@@ -56,6 +56,7 @@ const BannerSlider = () => {
               key={banner.id}
             >
               <picture>
+                <source srcSet={banner.url560} media="(max-width: 560px)"/>
                 <source srcSet={banner.url768} media="(max-width: 768px)"/>
                 <img
                   className="slider__img"
