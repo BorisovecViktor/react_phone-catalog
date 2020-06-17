@@ -102,11 +102,15 @@ export const getVisibleProducts = (state: RootState) => {
 
   switch (state.sortBy) {
     case SORT_BY.priceAsc:
-      visibleProducts.sort((a, b) => a.price - b.price);
+      visibleProducts.sort((a: Product, b: Product): number => (
+        (a.price - ((a.discount * a.price) / 100)) - (b.price - ((b.discount * b.price) / 100))
+      ));
       break;
 
     case SORT_BY.priceDesc:
-      visibleProducts.sort((a, b) => b.price - a.price);
+      visibleProducts.sort((a: Product, b: Product): number => (
+        (b.price - ((b.discount * b.price) / 100)) - (a.price - ((a.discount * a.price) / 100))
+      ));
       break;
 
     case SORT_BY.hotPrice:
