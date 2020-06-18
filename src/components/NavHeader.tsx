@@ -29,7 +29,10 @@ const NavHeader: React.FC<Props> = ({ links }) => {
               className="nav__header-link"
               exact
               activeClassName="nav__header-link--active"
-              to={url}
+              to={{
+                pathname: url,
+                search: '',
+              }}
               onClick={() => {
                 window.scrollTo(0, 0);
                 if (window.innerWidth < 1024) {

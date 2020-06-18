@@ -81,13 +81,14 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
       (perPage > categoryLength && categoryLength > 0)
       || !(perPageOptions.includes(+perPage) || perPage === categoryLength)
     ) {
-      searchParams.set('perPage', String(categoryLength));
-      searchParams.set('page', String(1));
+      searchParams.delete('page');
+      searchParams.delete('perPage');
       urlParamError = true;
     }
 
     if (page !== Math.trunc(page)) {
-      searchParams.set('perPage', String(Math.trunc(page)));
+      searchParams.delete('page');
+      searchParams.delete('perPage');
       urlParamError = true;
     }
 
@@ -96,7 +97,8 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
         search: searchParams.toString(),
       });
     }
-  });
+    // eslint-disable-next-line
+  }, [page, perPage]);
 
   const sortByHandler = (sortType: string) => {
     if (showSortBy) {
