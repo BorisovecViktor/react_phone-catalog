@@ -46,8 +46,8 @@ const Pagination: React.FC<Props> = ({ page, total, perPage }) => {
             type="button"
             className={
               classNames(
-                'pagination__button',
-                { 'pagination__button--active': pageNumber === page },
+                'pagination__button-page',
+                { 'pagination__button-page--active': pageNumber === page },
               )
             }
             key={uuidv4()}

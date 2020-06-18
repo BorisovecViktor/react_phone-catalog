@@ -68,23 +68,28 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
     return options.length === 0 ? [4] : options;
   }, [categoryLength]);
 
-  if (page > categoryLength / perPage) {
-    searchParams.set('page', String(1));
-    history.push({
-      search: searchParams.toString(),
-    });
-  }
+  useEffect(() => {
+    if (categoryLength > 0 && page > categoryLength / perPage) {
+      searchParams.delete('page');
+      searchParams.delete('perPage');
 
-  if (
-    perPage > categoryLength
-    || !(perPageOptions.includes(+perPage) || perPage === categoryLength)
-  ) {
-    searchParams.set('perPage', String(categoryLength));
-    searchParams.set('page', String(1));
-    history.push({
-      search: searchParams.toString(),
-    });
-  }
+
+      history.push({
+        search: searchParams.toString(),
+      });
+    }
+
+    if (
+      (perPage > categoryLength && categoryLength > 0)
+      || !(perPageOptions.includes(+perPage) || perPage === categoryLength)
+    ) {
+      searchParams.set('perPage', String(categoryLength));
+      searchParams.set('page', String(1));
+      history.push({
+        search: searchParams.toString(),
+      });
+    }
+  });
 
   const sortByHandler = (sortType: string) => {
     if (showSortBy) {

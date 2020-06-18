@@ -15,7 +15,7 @@ const AddProductBtn: React.FC<Props> = ({ product }) => {
   const dispatch = useDispatch();
   const cart = useSelector(store.getCart);
   const isAddedToCart = cart.some((item: Cart) => item.id === id);
-  const [firstClick, setFirstClick] = useState(false);
+  const [firstClick, setFirstClick] = useState(isAddedToCart);
   const [cartButtonText, setCartButtonText] = useState(isAddedToCart ? 'Added to cart' : 'Add to cart');
 
   return (
