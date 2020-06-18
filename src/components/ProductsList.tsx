@@ -36,7 +36,7 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
   const sortBy = searchParams.get('sortBy') || SORT_BY.newModels;
   const perPage = +(searchParams.get('perPage') || categoryLength);
   const visibleProducts = useSelector(store.getVisibleProducts);
-  const page = +(searchParams.get('page') || 1);
+  const page = +((searchParams.get('page')) || 1);
   const searchQuery = useSelector(store.getSearchQuery);
   const [showSortBy, setShowSortBy] = useState(false);
   const [showPerPage, setShowPerPage] = useState(false);
@@ -69,14 +69,12 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
   }, [categoryLength]);
 
   useEffect(() => {
+    let urlParamError = false;
+
     if (categoryLength > 0 && page > categoryLength / perPage) {
       searchParams.delete('page');
       searchParams.delete('perPage');
-
-
-      history.push({
-        search: searchParams.toString(),
-      });
+      urlParamError = true;
     }
 
     if (
@@ -85,6 +83,15 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
     ) {
       searchParams.set('perPage', String(categoryLength));
       searchParams.set('page', String(1));
+      urlParamError = true;
+    }
+
+    if (page !== Math.trunc(page)) {
+      searchParams.set('perPage', String(Math.trunc(page)));
+      urlParamError = true;
+    }
+
+    if (urlParamError) {
       history.push({
         search: searchParams.toString(),
       });
@@ -187,18 +194,26 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
               >
                 All
               </li>
-              {perPageOptions.map(perPageOption => (
-                <li
-                  className={classNames(
-                    'products__dropdown-item',
-                    { 'products__dropdown-item--active': perPageOption === perPage },
-                  )}
-                  onClick={() => handlePerPage(perPageOption)}
-                  key={perPageOption}
-                >
-                  {perPageOption}
-                </li>
-              ))}
+              {perPageOptions.map(perPageOption => {
+                if (perPageOption !== categoryLength) {
+                  return (
+                    (
+                      <li
+                        className={classNames(
+                          'products__dropdown-item',
+                          { 'products__dropdown-item--active': perPageOption === perPage },
+                        )}
+                        onClick={() => handlePerPage(perPageOption)}
+                        key={perPageOption}
+                      >
+                        {perPageOption}
+                      </li>
+                    )
+                  );
+                }
+
+                return false;
+              })}
             </ul>
           </div>
         </div>
