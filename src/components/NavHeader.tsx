@@ -27,7 +27,7 @@ const NavHeader: React.FC<Props> = ({ links }) => {
           >
             <NavLink
               className="nav__header-link"
-              exact
+              exact={url === '/'}
               activeClassName="nav__header-link--active"
               to={{
                 pathname: url,
