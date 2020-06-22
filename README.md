@@ -1,10 +1,18 @@
-# React Phone catalog
-[DEMO LINK](https://FE-feb20-5.github.io/react_phone-catalog/)
+# Phone store
+
+[DEMO PAGE](https://FE-feb20-5.github.io/react_phone-catalog/)
 
 ## Description
-[design layout](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2)
+Product store implemented following Figma layout [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2).
 
-[fake api products](https://mate-academy.github.io/react_phone-catalog/api/products.json)
+### Technologies
+- React/Redux
+- HTML5/CCS3, Sass, BEM, Responsive Layout 
 
-[fake api product details](https://mate-academy.github.io/react_phone-catalog/api/products/motorola-xoom.json)
+### Additional Libraries
+- Redux Trunk
+- React Transition Group
 
+### JSON files
+
+Used [products](https://FE-feb20-5.github.io/react_phone-catalog/api/products.json) and [product details](https://FE-feb20-5.github.io/react_phone-catalog/api/products/motorola-xoom.json) tо fetch data
