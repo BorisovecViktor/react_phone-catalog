@@ -7,7 +7,8 @@ Product store implemented following Figma layout [this design](https://www.figma
 
 ### Technologies
 - React/Redux
-- HTML5/CCS3, Sass, BEM, Responsive Layout 
+- HTML5/CCS3, Sass, BEM, Responsive Layout
+- Typescript
 
 ### Additional Libraries
 - Redux Trunk
