@@ -12,6 +12,7 @@ Product store implemented following Figma layout [this design](https://www.figma
 
 ### Additional Libraries
 - Redux Trunk
+- React router
 - React Transition Group
 
 ### JSON files
