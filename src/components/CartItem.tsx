@@ -65,7 +65,7 @@ const CartItem: React.FC<Props> = ({ product, quantity }) => {
             value={inputQuantity}
             onChange={e => {
               if (!Number(e.target.value)) {
-                setInputQuantity(String(1));
+                setInputQuantity('');
 
                 return;
               }
@@ -93,7 +93,7 @@ const CartItem: React.FC<Props> = ({ product, quantity }) => {
         <button
           className={classNames(
             'cart__item-button-plus',
-            { 'cart__item-button-plus--disabled': quantity === 10 },
+            { 'cart__item-button-plus--disabled': quantity === 99 },
           )}
           type="button"
           onClick={() => dispatch(setCartAmount(id, quantity + 1))}

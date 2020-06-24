@@ -12,9 +12,8 @@ Product store implemented following Figma layout [this design](https://www.figma
 
 ### Additional Libraries
 - Redux Trunk
-- React router
+- React Router
 - React Transition Group
 
 ### JSON files
-
 Used [products](https://FE-feb20-5.github.io/react_phone-catalog/api/products.json) and [product details](https://FE-feb20-5.github.io/react_phone-catalog/api/products/motorola-xoom.json) tо fetch data

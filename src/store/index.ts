@@ -6,6 +6,7 @@ import { Dispatch } from 'react';
 import * as api from '../helpers/api';
 import { SORT_BY } from '../constants';
 import productsReducer, { setProducts } from './products';
+import productsDetailsReducer, { setProductsDetails } from './productsDetails';
 import errorReducer, { setError } from './error';
 import filterReducer from './filter';
 import sortReducer from './sort';
@@ -14,10 +15,12 @@ import cartReducer from './cart';
 import favouritesReducer from './favourites';
 import searchReducer from './search';
 import navBurgerReducer from './burger';
+import loadingReducer, { startLoading, finishLoading } from './loading';
 
 
 const rootReducer = combineReducers({
   products: productsReducer,
+  productsDetails: productsDetailsReducer,
   filterBy: filterReducer,
   sortBy: sortReducer,
   errorMessage: errorReducer,
@@ -26,11 +29,13 @@ const rootReducer = combineReducers({
   favourites: favouritesReducer,
   searchQuery: searchReducer,
   isNavBurgerOpen: navBurgerReducer,
+  isLoading: loadingReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
 
 export const getProducts = (state: RootState) => state.products;
+export const getproductsDetails = (state: RootState) => state.productsDetails;
 export const getPerPage = (state: RootState) => state.pagination.perPage;
 export const getPage = (state: RootState) => state.pagination.page;
 export const getCart = (state: RootState) => state.cart;
@@ -38,17 +43,38 @@ export const getCartLength = (state: RootState) => state.cart.length;
 export const getFavourites = (state: RootState) => state.favourites;
 export const getSearchQuery = (state: RootState) => state.searchQuery;
 export const getIsNavBurgerOpen = (state: RootState) => state.isNavBurgerOpen;
+export const getIsLoading = (state: RootState) => state.isLoading;
 
 export const loadProducts = () => {
   return async (dispatch: Dispatch<unknown>) => {
     dispatch(setError(''));
+    dispatch(startLoading());
 
     try {
       const products = await api.fetchProducts();
 
       dispatch(setProducts(products));
+      dispatch(finishLoading());
     } catch (e) {
       dispatch(setError(e.message));
+      dispatch(finishLoading());
+    }
+  };
+};
+
+export const loadProductsDetails = (productId: string) => {
+  return async (dispatch: Dispatch<unknown>) => {
+    dispatch(setError(''));
+    dispatch(startLoading());
+
+    try {
+      const productsDetails = await api.fetchProductsDetails(productId);
+
+      dispatch(setProductsDetails(productsDetails));
+      dispatch(finishLoading());
+    } catch (e) {
+      dispatch(setError(e.message));
+      dispatch(finishLoading());
     }
   };
 };
@@ -76,11 +102,15 @@ export const getVisibleProducts = (state: RootState) => {
 
   switch (state.sortBy) {
     case SORT_BY.priceAsc:
-      visibleProducts.sort((a, b) => a.price - b.price);
+      visibleProducts.sort((a: Product, b: Product): number => (
+        (a.price - ((a.discount * a.price) / 100)) - (b.price - ((b.discount * b.price) / 100))
+      ));
       break;
 
     case SORT_BY.priceDesc:
-      visibleProducts.sort((a, b) => b.price - a.price);
+      visibleProducts.sort((a: Product, b: Product): number => (
+        (b.price - ((b.discount * b.price) / 100)) - (a.price - ((a.discount * a.price) / 100))
+      ));
       break;
 
     case SORT_BY.hotPrice:

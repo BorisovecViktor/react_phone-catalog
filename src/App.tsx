@@ -57,21 +57,19 @@ const App = () => {
                     />
                   </Route>
                   <Route path="/:productType/:productId">
-                    <ProductDetailsPage
-                      products={products}
-                    />
+                    <ProductDetailsPage />
                   </Route>
-                  <Route path="/phones" exact>
+                  <Route path="/phones">
                     <PhonesPage
                       filter={FILTERS.phones}
                     />
                   </Route>
-                  <Route path="/tablets" exact>
+                  <Route path="/tablets">
                     <TabletsPage
                       filter={FILTERS.tablets}
                     />
                   </Route>
-                  <Route path="/accessories" exact>
+                  <Route path="/accessories">
                     <AccessoriesPage
                       filter={FILTERS.accessories}
                     />

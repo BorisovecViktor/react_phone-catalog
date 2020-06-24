@@ -27,9 +27,12 @@ const NavHeader: React.FC<Props> = ({ links }) => {
           >
             <NavLink
               className="nav__header-link"
-              exact
+              exact={url === '/'}
               activeClassName="nav__header-link--active"
-              to={url}
+              to={{
+                pathname: url,
+                search: '',
+              }}
               onClick={() => {
                 window.scrollTo(0, 0);
                 if (window.innerWidth < 1024) {

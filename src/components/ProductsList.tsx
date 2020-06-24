@@ -36,7 +36,7 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
   const sortBy = searchParams.get('sortBy') || SORT_BY.newModels;
   const perPage = +(searchParams.get('perPage') || categoryLength);
   const visibleProducts = useSelector(store.getVisibleProducts);
-  const page = +(searchParams.get('page') || 1);
+  const page = +((searchParams.get('page')) || 1);
   const searchQuery = useSelector(store.getSearchQuery);
   const [showSortBy, setShowSortBy] = useState(false);
   const [showPerPage, setShowPerPage] = useState(false);
@@ -68,23 +68,37 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
     return options.length === 0 ? [4] : options;
   }, [categoryLength]);
 
-  if (page > categoryLength / perPage) {
-    searchParams.set('page', String(1));
-    history.push({
-      search: searchParams.toString(),
-    });
-  }
+  useEffect(() => {
+    let urlParamError = false;
 
-  if (
-    perPage > categoryLength
-    || !(perPageOptions.includes(+perPage) || perPage === categoryLength)
-  ) {
-    searchParams.set('perPage', String(categoryLength));
-    searchParams.set('page', String(1));
-    history.push({
-      search: searchParams.toString(),
-    });
-  }
+    if (categoryLength > 0 && page > categoryLength / perPage) {
+      searchParams.delete('page');
+      searchParams.delete('perPage');
+      urlParamError = true;
+    }
+
+    if (
+      (perPage > categoryLength && categoryLength > 0)
+      || !(perPageOptions.includes(+perPage) || perPage === categoryLength)
+    ) {
+      searchParams.delete('page');
+      searchParams.delete('perPage');
+      urlParamError = true;
+    }
+
+    if (page !== Math.trunc(page)) {
+      searchParams.delete('page');
+      searchParams.delete('perPage');
+      urlParamError = true;
+    }
+
+    if (urlParamError) {
+      history.push({
+        search: searchParams.toString(),
+      });
+    }
+    // eslint-disable-next-line
+  }, [page, perPage]);
 
   const sortByHandler = (sortType: string) => {
     if (showSortBy) {
@@ -182,18 +196,26 @@ const ProductsList: React.FC<Props> = ({ filter }) => {
               >
                 All
               </li>
-              {perPageOptions.map(perPageOption => (
-                <li
-                  className={classNames(
-                    'products__dropdown-item',
-                    { 'products__dropdown-item--active': perPageOption === perPage },
-                  )}
-                  onClick={() => handlePerPage(perPageOption)}
-                  key={perPageOption}
-                >
-                  {perPageOption}
-                </li>
-              ))}
+              {perPageOptions.map(perPageOption => {
+                if (perPageOption !== categoryLength) {
+                  return (
+                    (
+                      <li
+                        className={classNames(
+                          'products__dropdown-item',
+                          { 'products__dropdown-item--active': perPageOption === perPage },
+                        )}
+                        onClick={() => handlePerPage(perPageOption)}
+                        key={perPageOption}
+                      >
+                        {perPageOption}
+                      </li>
+                    )
+                  );
+                }
+
+                return false;
+              })}
             </ul>
           </div>
         </div>

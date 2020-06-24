@@ -5,6 +5,7 @@ import * as store from '../store';
 
 import ProductsList from '../components/ProductsList';
 import Breadcrumbs from '../components/Breadcrumbs';
+import Spinner from '../components/Spinner';
 
 type Props = {
   filter: string;
@@ -12,18 +13,26 @@ type Props = {
 
 const PhonesPage: React.FC<Props> = ({ filter }) => {
   const searchQuery = useSelector(store.getSearchQuery);
+  const loading = useSelector(store.getIsLoading);
 
   return (
     <>
-      {searchQuery === '' && (
+      {loading
+        ?
+        <Spinner />
+        :
         <>
-          <Breadcrumbs />
-          <h1 className="page__title">
-            Mobile phones
+          {searchQuery === '' && (
+            <>
+              <Breadcrumbs />
+              <h1 className="page__title">
+                Mobile phones
           </h1>
+            </>
+          )}
+          <ProductsList filter={filter} />
         </>
-      )}
-      <ProductsList filter={filter} />
+      }
     </>
   );
 };
