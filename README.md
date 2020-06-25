@@ -1,6 +1,6 @@
 # Phone store
 
-[DEMO PAGE](https://FE-feb20-5.github.io/react_phone-catalog/)
+[DEMO PAGE](https://borisovecviktor.github.io/react_phone-catalog/)
 
 ## Description
 Product store implemented following Figma layout [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2).
@@ -16,4 +16,4 @@ Product store implemented following Figma layout [this design](https://www.figma
 - React Transition Group
 
 ### JSON files
-Used [products](https://FE-feb20-5.github.io/react_phone-catalog/api/products.json) and [product details](https://FE-feb20-5.github.io/react_phone-catalog/api/products/motorola-xoom.json) tо fetch data
+Used [products](https://borisovecviktor.github.io/react_phone-catalog/api/products.json) and [product details](https://borisovecviktor.github.io/react_phone-catalog/api/products/motorola-xoom.json) tо fetch data
