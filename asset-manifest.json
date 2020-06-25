@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "./static/css/main.248e8f9e.chunk.css",
+    "main.js": "./static/js/main.4f5f5800.chunk.js",
+    "main.js.map": "./static/js/main.4f5f5800.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.e1f50cee.js",
+    "runtime-main.js.map": "./static/js/runtime-main.e1f50cee.js.map",
+    "static/js/2.2dec3201.chunk.js": "./static/js/2.2dec3201.chunk.js",
+    "static/js/2.2dec3201.chunk.js.map": "./static/js/2.2dec3201.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.77b579daea7b2fb0a5ea652db34b82d4.js": "./precache-manifest.77b579daea7b2fb0a5ea652db34b82d4.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/main.248e8f9e.chunk.css.map": "./static/css/main.248e8f9e.chunk.css.map",
+    "static/js/2.2dec3201.chunk.js.LICENSE.txt": "./static/js/2.2dec3201.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "./static/media/сarousel-arrow.078c49d7.svg",
+    "static/media/Pagination.scss": "./static/media/arrow-down.b96cc7d7.svg",
+    "static/media/CartPage.scss": "./static/media/cart-empty.d138e731.svg",
+    "static/media/CheckoutPage.scss": "./static/media/slider-arrow-left.5ca5c1f5.svg",
+    "static/media/CartItem.scss": "./static/media/plus.f998a5f5.svg",
+    "static/media/FavoritesPage.scss": "./static/media/heart-break.2a6877cc.svg",
+    "static/media/ProductsList.scss": "./static/media/person-empty-dolly.e5d09faa.svg",
+    "static/media/NotFoundPage.scss": "./static/media/sad-cry.d5f941eb.svg",
+    "static/media/Search.scss": "./static/media/search.bdce8803.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e1f50cee.js",
+    "static/js/2.2dec3201.chunk.js",
+    "static/css/main.248e8f9e.chunk.css",
+    "static/js/main.4f5f5800.chunk.js"
+  ]
+}
