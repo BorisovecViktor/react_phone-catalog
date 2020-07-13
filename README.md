@@ -11,7 +11,7 @@ Product store implemented following Figma layout [this design](https://www.figma
 - Typescript
 
 ### Additional Libraries
-- Redux Trunk
+- Redux Thunk
 - React Router
 - React Transition Group
 
