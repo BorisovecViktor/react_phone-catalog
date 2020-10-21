@@ -29,7 +29,7 @@ const Header = () => {
       .slice(1)[0]
   ), [location]);
 
-  const locationLength = location.pathname.split('/');
+  const typeOfLocation = location.pathname.split('/');
 
   return (
     <header className="header">
@@ -40,7 +40,7 @@ const Header = () => {
       <div className="header__container">
         {searchAvailable.some(path => path === currentLocation
           &&
-          locationLength.length < 3)
+          typeOfLocation.length < 3)
           &&
           (
             <Search currentLocation={currentLocation} />
