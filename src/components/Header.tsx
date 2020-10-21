@@ -29,6 +29,8 @@ const Header = () => {
       .slice(1)[0]
   ), [location]);
 
+  const locationLength = location.pathname.split('/');
+
   return (
     <header className="header">
       <div className="header__container">
@@ -36,9 +38,13 @@ const Header = () => {
         <NavHeader links={headerLinks} />
       </div>
       <div className="header__container">
-        {searchAvailable.some(path => path === currentLocation) && (
-          <Search currentLocation={currentLocation} />
-        )}
+        {searchAvailable.some(path => path === currentLocation
+          &&
+          locationLength.length < 3)
+          &&
+          (
+            <Search currentLocation={currentLocation} />
+          )}
         <Favorites />
         <Cart />
       </div>
